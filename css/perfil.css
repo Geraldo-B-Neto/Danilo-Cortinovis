@@ -1,0 +1,631 @@
+/* ═══════════════════════════════════════════
+   SEÇÃO PERFIL — versão aprimorada
+═══════════════════════════════════════════ */
+
+/* ── Variável de ouro (adicione ao :root se não tiver) ── */
+:root {
+  --cor-ouro: #c49a4f;
+  --cor-ouro-escuro: #8b6c3e;
+}
+
+.perfil {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "esquerda"
+    "foto";
+}
+
+.perfil__esquerda {
+  grid-area: esquerda;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Bio ── */
+.perfil__bio {
+  background: #c5bfb2;
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Retângulo decorativo no topo direito (mantido) */
+.perfil__decoracao {
+  position: absolute;
+  top: 0;
+  right: clamp(1rem, 5vw, 3rem);
+  width: clamp(5rem, 12vw, 8rem);
+  height: clamp(3rem, 8vw, 5.5rem);
+  border: 1px solid rgba(0,0,0,0.28);
+  border-top: none;
+  pointer-events: none;
+}
+
+/* Faixa dourada na base da bio */
+.perfil__bio::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--cor-ouro-escuro), var(--cor-ouro), var(--cor-ouro-escuro));
+}
+
+/* ── Eyebrow ── */
+.perfil__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.4rem;
+  animation: perfilFadeUp 0.6s ease both;
+}
+
+.perfil__eyebrow-linha {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: rgba(0,0,0,0.45);
+  flex-shrink: 0;
+}
+
+.perfil__eyebrow-texto {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.5rem, 0.85vw, 0.6rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+}
+
+/* ── Nome ── */
+.perfil__nome {
+  font-family: var(--fonte-display);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cor-texto-escuro);
+  margin-bottom: 1rem;
+  animation: perfilFadeUp 0.6s 0.1s ease both;
+}
+
+.perfil__divisor {
+  width: clamp(12rem, 65%, 30rem);
+  height: 1px;
+  background: rgba(0,0,0,0.3);
+  border: none;
+  margin-bottom: 1.4rem;
+  animation: perfilExpandW 0.8s 0.2s ease both;
+}
+
+/* ── Citação ── */
+.perfil__quote {
+  font-family: var(--fonte-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.55;
+  color: #2a2420;
+  margin: 0 0 1.3rem;
+  padding-left: clamp(0.75rem, 2vw, 1.1rem);
+  border-left: 2px solid var(--cor-ouro-escuro);
+  animation: perfilFadeUp 0.6s 0.3s ease both;
+}
+
+/* ── Descrição ── */
+.perfil__descricao {
+  font-family: var(--fonte-display);
+  font-size: clamp(0.9rem, 1.7vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--cor-texto-escuro);
+  max-width: 34rem;
+  margin-bottom: 1.6rem;
+  animation: perfilFadeUp 0.6s 0.4s ease both;
+}
+
+/* ── Origem ── */
+.perfil__origem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: perfilFadeUp 0.6s 0.5s ease both;
+}
+
+.perfil__origem-icone {
+  width: 14px;
+  height: 14px;
+  color: var(--cor-ouro-escuro);
+  flex-shrink: 0;
+}
+
+.perfil__origem-texto {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.5rem, 0.85vw, 0.6rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.5);
+}
+
+/* ── Diferenciais ── */
+.perfil__diferenciais {
+  background: var(--cor-fundo);
+  display: flex;
+  flex-direction: row;
+  border-top: 3px solid var(--cor-ouro-escuro);
+}
+
+.diferencial {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.2vw, 0.75rem);
+  padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.5rem, 2vw, 1rem);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.3s ease;
+}
+
+.diferencial:last-child {
+  border-right: none;
+}
+
+.diferencial:hover {
+  background: rgba(139,108,62,0.1);
+}
+
+.diferencial__icone {
+  width: clamp(2.2rem, 5vw, 3.2rem);
+  height: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--cor-ouro);
+}
+
+.diferencial__icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Número tipográfico (para "Anos de Experiência") */
+.diferencial__numero {
+  font-family: var(--fonte-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--cor-ouro);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.diferencial__texto {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.46rem, 0.85vw, 0.6rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.55;
+  color: var(--cor-texto-claro);
+}
+
+/* ── Foto ── */
+.perfil__foto-wrapper {
+  grid-area: foto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Barra dourada vertical na borda esquerda da foto */
+.perfil__foto-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--cor-ouro-escuro), var(--cor-ouro), var(--cor-ouro-escuro));
+  z-index: 1;
+}
+
+.perfil__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  min-height: clamp(20rem, 60vw, 50rem);
+  display: block;
+  filter: brightness(0.93) contrast(1.04);
+}
+
+/* ── Animações ── */
+@keyframes perfilFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes perfilExpandW {
+  from { width: 0; opacity: 0; }
+  to   { width: clamp(12rem, 65%, 30rem); opacity: 1; }
+}
+
+/* ── Responsividade ── */
+@media (max-width: 39.99rem) {
+  .perfil__bio {
+    flex: none;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 40rem) {
+  .perfil {
+    grid-template-areas: "esquerda foto";
+    grid-template-columns: 48% 52%;
+    min-height: 85vh;
+    align-items: stretch;
+  }
+
+  .perfil__foto {
+    min-height: unset;
+    height: 100%;
+  }
+
+  /* Barra dourada na bio some no desktop (borda fica à esquerda da foto) */
+  .perfil__bio::after { display: none; }
+}
+
+@media (min-width: 60rem) {
+  .perfil { grid-template-columns: 46% 54%; }
+}
+
+@media (min-width: 75rem) {
+  .perfil { grid-template-columns: 44% 56%; }
+}
+
+/* ═══════════════════════════════════════════
+   CARROSSEL DE BIOGRAFIA
+═══════════════════════════════════════════ */
+.bio-carrossel {
+  background: var(--cor-fundo);
+  border-top: 3px solid var(--cor-ouro-escuro);
+  overflow: hidden;
+}
+
+.bc-track-wrap {
+  overflow: hidden;
+}
+
+.bc-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.bc-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Slide 1: Filosofia ── */
+.bc-slide--filosofia {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: clamp(2rem, 4vw, 2.8rem) clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.bcs-quote {
+  font-family: var(--fonte-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: #e8e0d4;
+  line-height: 1.45;
+  border-left: 2px solid var(--cor-ouro);
+  padding-left: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.bcs-quote-autor {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.48rem, 0.8vw, 0.55rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cor-ouro-escuro);
+  font-style: normal;
+}
+
+/* ── Slide 2: Números ── */
+.bc-slide--numeros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bcs-num-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: clamp(1.5rem, 3vw, 2.2rem) 1rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.bcs-num-item:last-child {
+  border-right: none;
+}
+
+.bcs-num {
+  font-family: var(--fonte-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--cor-ouro);
+  line-height: 1;
+}
+
+.bcs-num-unidade {
+  font-size: 0.8em;
+  color: var(--cor-ouro-escuro);
+  margin-left: 3px;
+}
+
+.bcs-num-label {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.46rem, 0.8vw, 0.55rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Slide 3: Especialidades ── */
+.bc-slide--espec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: clamp(1.5rem, 3.5vw, 2.2rem) clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.bcs-eyebrow {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.48rem, 0.8vw, 0.55rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-ouro-escuro);
+  margin-bottom: 1.1rem;
+}
+
+.bcs-espec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem clamp(1.5rem, 4vw, 3rem);
+  list-style: none;
+}
+
+.bcs-espec-grid li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--fonte-display);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: #e8e0d4;
+  font-weight: 400;
+}
+
+.bcs-espec-grid li::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--cor-ouro);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Slide 4: Trajetória ── */
+.bc-slide--traj {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 3.5vw, 2.2rem) clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.bcs-traj {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bcs-traj li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  position: relative;
+}
+
+.bcs-traj li:last-child {
+  padding-bottom: 0;
+}
+
+.bcs-traj-ano {
+  font-family: var(--fonte-display);
+  font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+  color: var(--cor-ouro);
+  font-weight: 300;
+  width: 2.4rem;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+  text-align: right;
+}
+
+.bcs-traj-linha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.3rem;
+}
+
+.bcs-traj-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cor-ouro-escuro);
+  flex-shrink: 0;
+}
+
+.bcs-traj li:not(:last-child) .bcs-traj-linha::after {
+  content: '';
+  display: block;
+  width: 1px;
+  flex: 1;
+  background: rgba(139,108,62,0.3);
+  margin-top: 4px;
+  min-height: 1.8rem;
+}
+
+.bcs-traj-ev {
+  font-family: var(--fonte-display);
+  font-size: clamp(0.88rem, 1.7vw, 1rem);
+  color: #e8e0d4;
+  line-height: 1.35;
+}
+
+.bcs-traj-local {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.44rem, 0.75vw, 0.52rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.15rem;
+}
+
+/* ── Slide 5: Domínio técnico ── */
+.bc-slide--skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 3.5vw, 2.2rem) clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.bcs-skills {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.bcs-skills li {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.bcs-skill-nome {
+  font-family: var(--fonte-display);
+  font-size: clamp(0.9rem, 1.7vw, 1rem);
+  color: #e8e0d4;
+  font-weight: 400;
+  width: clamp(5rem, 10vw, 7rem);
+  flex-shrink: 0;
+}
+
+.bcs-skill-barra {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.bcs-skill-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--cor-ouro);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bcs-skill-nivel {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.44rem, 0.75vw, 0.52rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-ouro-escuro);
+  width: clamp(3rem, 5vw, 4rem);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Navegação ── */
+.bc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.bc-dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.bc-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.bc-dot.ativo {
+  background: var(--cor-ouro);
+  transform: scale(1.3);
+}
+
+.bc-label {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.44rem, 0.75vw, 0.52rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+
+.bc-btns {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.bc-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(139,108,62,0.4);
+  background: transparent;
+  color: var(--cor-ouro);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.bc-btn:hover {
+  background: rgba(139,108,62,0.15);
+}

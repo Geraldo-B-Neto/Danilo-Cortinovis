@@ -1,0 +1,185 @@
+/* ═══════════════════════════════════════════
+   OPÇÕES DE TRANSFORMAÇÃO — Comparativo
+   ═══════════════════════════════════════════ */
+
+/* ─── GERAL PARA TESTES ─── */
+.transform-options-container {
+    width: 100%;
+    background: var(--cor-fundo);
+}
+
+.option-label {
+    text-align: center;
+    padding: 100px 0 50px;
+    font-family: var(--fonte-display);
+    font-size: 2rem;
+    color: var(--cor-texto-muted);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.3em;
+}
+
+/* ──────────────────────────────────────────────────────────
+   OPÇÃO 1: LENTE DE PRECISÃO (The Razor Lens)
+   ────────────────────────────────────────────────────────── */
+.transform-v1-lens {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    cursor: none; /* Vamos usar uma navalha customizada */
+}
+
+.lens-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.lens-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.lens-img--after { z-index: 1; }
+.lens-img--before { 
+    z-index: 2; 
+    clip-path: circle(150px at 50% 50%); /* Lente inicial */
+}
+
+.lens-cursor {
+    position: fixed;
+    width: 2px;
+    height: 100vh;
+    background: var(--cor-destaque);
+    z-index: 100;
+    pointer-events: none;
+    top: 0;
+    left: -10px;
+    box-shadow: 0 0 20px var(--cor-destaque);
+}
+
+.lens-info {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    z-index: 10;
+    max-width: 400px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   OPÇÃO 2: THE FORGE (Steel Stacking)
+   ────────────────────────────────────────────────────────── */
+.transform-v2-forge {
+    position: relative;
+    width: 100%;
+    background: #000;
+}
+
+.forge-stack {
+    position: relative;
+}
+
+.forge-item {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.forge-card {
+    position: relative;
+    width: 70vw;
+    height: 80vh;
+    background: #111;
+    overflow: hidden;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.forge-item:nth-child(even) .forge-card { transform: rotate(1deg); }
+.forge-item:nth-child(odd) .forge-card { transform: rotate(-1deg); }
+
+.forge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.forge-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+}
+
+/* ──────────────────────────────────────────────────────────
+   OPÇÃO 3: THE REVEAL (Asymmetric Bento)
+   ────────────────────────────────────────────────────────── */
+.transform-v3-reveal {
+    width: 100%;
+    padding: 100px 5vw;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 250px;
+    gap: 20px;
+}
+
+.bento-card {
+    position: relative;
+    background: #111;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bento-card--large { grid-column: span 8; grid-row: span 2; }
+.bento-card--tall { grid-column: span 4; grid-row: span 3; }
+.bento-card--medium { grid-column: span 4; grid-row: span 2; }
+.bento-card--small { grid-column: span 4; grid-row: span 1; }
+
+.bento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.bento-reveal {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.bento-card:hover .bento-reveal { opacity: 1; }
+.bento-card:hover .bento-img { transform: scale(1.05); }
+
+.bento-label {
+    position: absolute;
+    top: 20px; left: 20px;
+    font-family: var(--fonte-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: #fff;
+    z-index: 5;
+    background: rgba(0,0,0,0.5);
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .transform-v3-reveal {
+        display: flex;
+        flex-direction: column;
+    }
+    .bento-card { height: 400px; }
+    .forge-card { width: 90vw; }
+}

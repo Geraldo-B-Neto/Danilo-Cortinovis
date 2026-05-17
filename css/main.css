@@ -1,0 +1,20 @@
+/* ═══════════════════════════════════════════
+   MAIN — importa todos os módulos CSS
+═══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@400;600;700&display=swap');
+
+@import 'variables.css';
+@import 'reset.css';
+@import 'animations.css';
+@import 'navbar.css';
+@import 'hero.css';
+@import 'biografia.css';
+@import 'depoimento.css';
+@import 'servicos.css';
+@import 'identidade_immersive.css';
+@import 'identidade.css';
+@import 'perfil.css';
+@import 'instagram.css';
+@import 'secoesnovas.css';
+@import 'transformacao_immersive.css';
+@import 'footer.css';

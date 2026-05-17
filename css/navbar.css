@@ -1,0 +1,298 @@
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 5vw, 3.5rem);
+  height: 72px;
+  background: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 192, 176, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar--scrolled {
+  background: rgba(13, 13, 13, 0.98);
+  border-bottom-color: rgba(200, 192, 176, 0.18);
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--cor-texto-claro);
+  flex-shrink: 0;
+}
+
+.navbar__logo-monograma {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--cor-borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--cor-card);
+  flex-shrink: 0;
+}
+
+.navbar__logo-nome {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar__logo-nome span:first-child {
+  font-family: var(--fonte-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cor-card);
+}
+
+.navbar__logo-nome span:last-child {
+  font-family: var(--fonte-corpo);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.55);
+}
+
+/* Links */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  list-style: none;
+}
+
+.navbar__nav a {
+  font-family: var(--fonte-corpo);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 228, 0.65);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.navbar__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cor-card);
+  transition: width 0.3s ease;
+}
+
+.navbar__nav a:hover {
+  color: var(--cor-card);
+}
+
+.navbar__nav a:hover::after {
+  width: 100%;
+}
+
+/* CTA Button */
+.navbar__cta {
+  font-family: var(--fonte-corpo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cor-botao-texto);
+  background: var(--cor-botao-fundo);
+  text-decoration: none;
+  padding: 0.6rem 1.35rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar__cta:hover {
+  background: var(--cor-texto-claro);
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 101;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--cor-card);
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.navbar__hamburger.ativo span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.navbar__hamburger.ativo span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.navbar__hamburger.ativo span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile menu drawer */
+.navbar__drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: 72px;
+  background: #0d0d0d;
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.navbar__drawer.ativo {
+  transform: translateX(0);
+}
+
+.navbar__drawer-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.navbar__drawer-nav a {
+  font-family: var(--fonte-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(240, 236, 228, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.navbar__drawer-nav a:hover {
+  color: var(--cor-card);
+}
+
+/* Offset body so navbar doesn't overlap content */
+/* O espaço acima do hero vinha daqui. Removemos para que o hero fique encostado no topo. */
+body {
+  padding-top: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 820px) {
+  .navbar__nav,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__drawer {
+    display: flex;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   navbar-scroll.css — adicionar ao main.css (ou importar)
+   Classes controladas pelo navbar.js
+═══════════════════════════════════════════════════════ */
+
+/* Estado inicial: navbar invisível e fora do fluxo visual */
+.navbar--oculta {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Estado visível: transição suave ao entrar */
+.navbar--visivel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Transição aplicada sempre na navbar */
+.navbar {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    padding 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Modo compacto: reduz altura após sair do herói */
+.navbar--compacta {
+  /* Ajuste conforme o padding original da navbar */
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  backdrop-filter: blur(12px);
+  /* Se o background original for transparente, escurece um pouco */
+  background-color: rgba(0, 0, 0, 0.72); /* adapte à paleta do site */
+}
+
+/* Link ativo via scroll-spy */
+.navbar__nav .navbar__link--ativo,
+.navbar__drawer-nav .navbar__link--ativo {
+  opacity: 1;
+  /* Adapte à identidade visual — ex: sublinhado ou cor de destaque */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Hamburger — estado ativo (X) */
+.navbar__hamburger--ativo span:nth-child(1) {
+  transform: translateY(calc(var(--hamburger-gap, 6px) + var(--hamburger-height, 2px))) rotate(45deg);
+}
+.navbar__hamburger--ativo span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar__hamburger--ativo span:nth-child(3) {
+  transform: translateY(calc(-1 * (var(--hamburger-gap, 6px) + var(--hamburger-height, 2px)))) rotate(-45deg);
+}
+
+/* Drawer — estado aberto */
+.navbar__drawer--aberto {
+  /* Substitua pela lógica do seu drawer atual (ex: translateX, opacity) */
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

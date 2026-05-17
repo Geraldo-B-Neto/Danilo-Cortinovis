@@ -1,0 +1,539 @@
+/* ═══════════════════════════════════════════
+   SEÇÃO IDENTIDADE — identidade.css
+   Grade editorial assimétrica para conteúdo
+   pessoal: moto, estilo, bastidores, ambiente
+═══════════════════════════════════════════ */
+
+.identidade {
+  background: var(--cor-fundo);
+  padding: clamp(4rem, 10vw, 7rem) 0 0;
+  overflow: hidden;
+}
+
+/* ── Cabeçalho da seção ── */
+.identidade__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 clamp(1.5rem, 6vw, 4.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.identidade__header-texto {}
+
+.identidade__eyebrow {
+  font-family: var(--fonte-corpo);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.45);
+  margin-bottom: 0.6rem;
+}
+
+.identidade__titulo {
+  font-family: var(--fonte-display);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cor-texto-claro);
+}
+
+.identidade__manifesto {
+  font-family: var(--fonte-display);
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(240, 236, 228, 0.38);
+  max-width: 22rem;
+  text-align: right;
+  align-self: flex-end;
+}
+
+/* ── Grade principal ── */
+/*
+  Layout desktop (min 60rem):
+  ┌─────────────────┬──────────────────┐
+  │                 │  ITEM B (vídeo)  │
+  │   ITEM A        ├────────┬─────────┤
+  │   (retrato)     │ ITEM C │ ITEM D  │
+  │                 │        │         │
+  ├────────┬────────┴────────┴─────────┤
+  │ ITEM E │    ITEM F (panorâmica)    │
+  └────────┴───────────────────────────┘
+
+  Mobile: coluna única empilhada
+*/
+.identidade__grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+
+.id-item {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+}
+
+.id-item__midia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.5s ease;
+  filter: brightness(0.88) saturate(0.9);
+}
+
+.id-item:hover .id-item__midia {
+  transform: scale(1.04);
+  filter: brightness(0.96) saturate(1);
+}
+
+/* Overlay de texto sobre cada item */
+.id-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.72) 0%,
+    rgba(13, 13, 13, 0) 55%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.id-item:hover .id-item__overlay {
+  opacity: 1;
+}
+
+.id-item__legenda {
+  font-family: var(--fonte-corpo);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cor-card);
+}
+
+/* Tamanhos específicos de cada item (mobile primeiro) */
+.id-item--a { aspect-ratio: 3 / 4; }
+.id-item--b { aspect-ratio: 16 / 9; }
+.id-item--c { aspect-ratio: 1 / 1; }
+.id-item--d { aspect-ratio: 1 / 1; }
+.id-item--e { aspect-ratio: 3 / 4; }
+.id-item--f { aspect-ratio: 16 / 9; }
+
+/* Item de vídeo */
+.id-item--video::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(200, 192, 176, 0.7);
+  border-radius: 50%;
+  z-index: 3;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.id-item--video::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 16px;
+  border-color: transparent transparent transparent rgba(200, 192, 176, 0.85);
+  z-index: 4;
+  transition: border-color 0.2s ease;
+}
+
+.id-item--video:hover::before {
+  border-color: var(--cor-card);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.id-item--video:hover::after {
+  border-color: transparent transparent transparent var(--cor-card);
+}
+
+/* iframe de vídeo embutido */
+.id-item__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+/* Desktop: grid assimétrico em duas colunas */
+@media (min-width: 40rem) {
+  .identidade__grade {
+    grid-template-columns: 42% 58%;
+    grid-template-rows: auto auto auto;
+  }
+
+  /* Linha 1: A ocupa 2 linhas à esquerda */
+  .id-item--a {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    aspect-ratio: unset;
+    min-height: clamp(30rem, 65vw, 52rem);
+  }
+
+  /* B: vídeo panorâmico à direita, linha 1 */
+  .id-item--b {
+    grid-column: 2;
+    grid-row: 1;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* C e D: dois quadrados na linha 2, coluna direita */
+  .id-item--c,
+  .id-item--d {
+    grid-row: 2;
+    aspect-ratio: 1 / 1;
+  }
+
+  .id-item--c { grid-column: 2; }
+  .id-item--d { grid-column: 2; }
+
+  /* C e D ficam lado a lado dentro da coluna 2 */
+  /* Precisa de um wrapper para isso — ver HTML */
+  .id-grupo-cd {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .id-linha-ef {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Wrapper para C+D lado a lado */
+.id-grupo-cd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+
+.id-grupo-cd .id-item--c,
+.id-grupo-cd .id-item--d {
+  grid-column: unset;
+  grid-row: unset;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+/* Linha 3: E pequeno + F panorâmica */
+.id-linha-ef {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  gap: 3px;
+}
+
+.id-linha-ef .id-item--e,
+.id-linha-ef .id-item--f {
+  aspect-ratio: unset;
+  min-height: clamp(14rem, 28vw, 22rem);
+}
+
+@media (min-width: 60rem) {
+  .id-item--a {
+    min-height: clamp(36rem, 72vw, 58rem);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   SEÇÃO BASTIDORES — bastidores.css
+   Trilho horizontal de vídeos/Reels pessoais
+═══════════════════════════════════════════ */
+
+.bastidores {
+  background: var(--cor-fundo);
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  overflow: hidden;
+}
+
+/* ── Cabeçalho ── */
+.bastidores__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 clamp(1.5rem, 6vw, 4.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.bastidores__eyebrow {
+  font-family: var(--fonte-corpo);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.45);
+  margin-bottom: 0.6rem;
+}
+
+.bastidores__titulo {
+  font-family: var(--fonte-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cor-texto-claro);
+}
+
+.bastidores__ver-todos {
+  font-family: var(--fonte-corpo);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.5);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 192, 176, 0.2);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bastidores__ver-todos:hover {
+  color: var(--cor-card);
+  border-color: var(--cor-card);
+}
+
+.bastidores__ver-todos svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2px;
+}
+
+/* ── Trilho de scroll ── */
+.bastidores__trilho-wrap {
+  padding-left: clamp(1.5rem, 6vw, 4.5rem);
+  overflow: hidden;
+}
+
+.bastidores__trilho {
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1.5rem; /* espaço para scrollbar customizada */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 192, 176, 0.2) transparent;
+  padding-right: clamp(1.5rem, 6vw, 4.5rem);
+  min-height: clamp(280px, 55vw, 420px); /* Previne Layout Shift (CLS) enquanto aguarda API */
+}
+
+.bastidores__trilho::-webkit-scrollbar {
+  height: 2px;
+}
+
+.bastidores__trilho::-webkit-scrollbar-track {
+  background: rgba(200, 192, 176, 0.06);
+}
+
+.bastidores__trilho::-webkit-scrollbar-thumb {
+  background: rgba(200, 192, 176, 0.22);
+}
+
+/* ── Cards de vídeo (formato Reel: 9:16) ── */
+.reel-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: clamp(140px, 30vw, 220px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reel-card__thumb {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #111;
+}
+
+.reel-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.82) saturate(0.85);
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.4s ease;
+}
+
+.reel-card:hover .reel-card__img {
+  transform: scale(1.06);
+  filter: brightness(0.95) saturate(1);
+}
+
+/* Botão de play */
+.reel-card__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 13, 13, 0.12);
+  transition: background 0.3s ease;
+}
+
+.reel-card:hover .reel-card__play {
+  background: rgba(13, 13, 13, 0.25);
+}
+
+.reel-card__play-circulo {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(200, 192, 176, 0.65);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.reel-card:hover .reel-card__play-circulo {
+  border-color: var(--cor-card);
+  transform: scale(1.08);
+}
+
+.reel-card__play-triangulo {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 7px 12px;
+  border-color: transparent transparent transparent rgba(200, 192, 176, 0.75);
+  margin-left: 3px;
+  transition: border-color 0.2s ease;
+}
+
+.reel-card:hover .reel-card__play-triangulo {
+  border-color: transparent transparent transparent var(--cor-card);
+}
+
+/* Badge de tipo: reel, meme, moto */
+.reel-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(13, 13, 13, 0.72);
+  color: var(--cor-card);
+  font-family: var(--fonte-corpo);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+}
+
+/* Duração no canto */
+.reel-card__duracao {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(240, 236, 228, 0.7);
+}
+
+/* Legenda abaixo do card */
+.reel-card__legenda {
+  font-family: var(--fonte-corpo);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 228, 0.35);
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.reel-card:hover .reel-card__legenda {
+  color: rgba(240, 236, 228, 0.65);
+}
+
+/* Card de meme — tratamento diferente, proporção quadrada */
+.reel-card--meme .reel-card__thumb {
+  aspect-ratio: 1 / 1;
+}
+
+/* ── Indicador de scroll (hint) ── */
+.bastidores__scroll-hint {
+  padding: 0.5rem clamp(1.5rem, 6vw, 4.5rem) 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bastidores__scroll-hint span {
+  font-family: var(--fonte-corpo);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.22);
+}
+
+.bastidores__scroll-linha {
+  height: 1px;
+  width: 3rem;
+  background: rgba(200, 192, 176, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.bastidores__scroll-linha::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 192, 176, 0.5);
+  animation: scrollHint 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+  0%   { left: -100%; }
+  50%  { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* ── Responsividade bastidores ── */
+@media (min-width: 60rem) {
+  .reel-card {
+    width: clamp(180px, 18vw, 240px);
+  }
+}

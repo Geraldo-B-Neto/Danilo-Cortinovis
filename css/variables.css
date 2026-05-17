@@ -1,0 +1,18 @@
+/* ═══════════════════════════════════════════
+   VARIÁVEIS GLOBAIS
+═══════════════════════════════════════════ */
+:root {
+  --cor-fundo:          #000000;
+  --cor-card:           #c8c0b0;
+  --cor-card-escuro:    #1a1a1a;
+  --cor-texto-claro:    #f0ece4;
+  --cor-texto-escuro:   #1a1a1a;
+  --cor-estrela:        #c8c0b0;
+  --cor-borda:          #c8c0b0;
+  --cor-emblema:        #8a8070;
+  --cor-botao-fundo:    #c8c0b0;
+  --cor-botao-texto:    #0d0d0d;
+
+  --fonte-display: 'Cormorant Garamond', Georgia, serif;
+  --fonte-corpo:   'Montserrat', sans-serif;
+}

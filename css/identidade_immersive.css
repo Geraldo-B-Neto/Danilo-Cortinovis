@@ -1,0 +1,458 @@
+/* ═══════════════════════════════════════════
+   IDENTIDADE IMERSIVA — v3.0
+   Design: Quiet Luxury / Spatial Stacking
+   Engine: LERP-Driven Scroll Mapping (0.075)
+   Author: Antigravity
+   ═══════════════════════════════════════════ */
+
+.identidade-immersive {
+  position: relative;
+  background: var(--cor-fundo);
+  width: 100%;
+  /* Altura controlada por JS (ex: 600vh para comportar 3 fases longas) */
+  overflow: clip;
+}
+
+.identidade-immersive__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Camada de fundo parallax em vídeo (slow-motion, cinza) */
+.id-parallax-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: translate3d(0, var(--id-bg-parallax-y, 0px), 0) scale(1.05);
+  will-change: transform;
+}
+
+.id-parallax-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.7));
+}
+
+.id-parallax-bg__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  filter: grayscale(1) brightness(0.5) contrast(1.05);
+}
+
+/* ── 1. Phase 1: Intro Zoom (0-25%) ── */
+.id-intro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  opacity: var(--id-intro-opacity, 1);
+  visibility: var(--id-intro-visibility, visible);
+}
+
+.id-intro__img-wrap {
+  position: absolute;
+  width: 400px;
+  height: 550px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Scale 1x to 4x */
+  transform: translate3d(0, 0, 0) scale(var(--id-zoom, 1));
+  will-change: transform;
+}
+
+.id-intro__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Alternância de Imagem (Mobile/Desktop) */
+.id-intro__img--mobile {
+  display: none !important;
+}
+.id-intro__img--desktop {
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .id-intro__img--mobile {
+    display: block !important;
+  }
+  .id-intro__img--desktop {
+    display: none !important;
+  }
+}
+
+.id-intro__title {
+  position: relative;
+  z-index: 11;
+  font-family: var(--fonte-display);
+  font-size: clamp(2rem, 10vw, 5rem);
+  text-transform: uppercase;
+  color: var(--cor-texto-claro);
+  text-align: center;
+  line-height: 0.9;
+  opacity: var(--id-title-opacity, 1);
+  transform: translate3d(0, var(--id-title-y, 0), 0);
+}
+
+/* ── 2. Phase 2: Horizontal Scroll (25-70%) ── */
+.id-horizontal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-left: 15vw;
+  transform: translate3d(var(--id-horizontal-x, 100%), 0, 0);
+  opacity: var(--id-horizontal-opacity, 0);
+  will-change: transform, opacity;
+}
+
+.id-trilho {
+  display: flex;
+  gap: 12vw;
+  align-items: center;
+}
+
+/* Slide Cards (Same as transformacao but localized) */
+.id-slide-card {
+  flex-shrink: 0;
+  width: clamp(230px, 22vw, 340px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.id-slide-card__video {
+  width: 100%;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  /* Quiet Luxury color treatment */
+  filter: contrast(1.08) sepia(0.16) brightness(0.78);
+}
+
+/* ── 3. Phase 3: Spatial Stacking (70-100%) ── */
+.id-stacking {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: var(--id-stack-opacity, 0);
+  visibility: var(--id-stack-visibility, hidden);
+}
+
+.id-stack-card {
+  position: absolute;
+  width: clamp(280px, 40vw, 450px);
+  aspect-ratio: 1/1;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  /* Animado via JS */
+  transform: translate3d(var(--id-card-x, 0), var(--id-card-y, 0), 0) scale(var(--id-card-scale, 1)) rotate(var(--id-card-rotate, 0deg));
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Pseudo-elemento para hardware-accelerated brightness (opacity) */
+.id-stack-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--id-card-overlay, 0);
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  will-change: opacity;
+}
+
+.id-stack-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.id-stack-card__label {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--fonte-corpo);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* Origin Presets (used by JS to calculate initial X,Y) */
+[data-origin="top-left"] {
+  --init-x: -120%;
+  --init-y: -120%;
+}
+
+[data-origin="top-right"] {
+  --init-x: 120%;
+  --init-y: -120%;
+}
+
+[data-origin="bottom-left"] {
+  --init-x: -120%;
+  --init-y: 120%;
+}
+
+[data-origin="bottom-right"] {
+  --init-x: 120%;
+  --init-y: 120%;
+}
+
+[data-origin="left"] {
+  --init-x: -150%;
+  --init-y: 0;
+}
+
+[data-origin="right"] {
+  --init-x: 150%;
+  --init-y: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .id-intro__img-wrap {
+    width: 280px;
+    height: 380px;
+  }
+
+  .id-slide-card {
+    width: 85vw;
+  }
+
+  .id-stack-card {
+    width: 85vw;
+  }
+}
+
+/* ── Otimização de GPU para Mobile (Alivia o processamento de renderização) ── */
+@media (max-width: 768px) {
+  .id-parallax-bg__video {
+    /* Deixa o navegador fazer o mínimo de filtro possível, ou usar overlay na frente */
+    filter: grayscale(1);
+    opacity: 0.15;
+  }
+
+  .id-slide-card__video {
+    filter: none; /* Remove contraste/sépia no scroll */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Simulando color grading via pseudo-elemento rápido (blend mode) no mobile */
+  .id-slide-card {
+    position: relative;
+  }
+  .id-slide-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: rgba(40, 30, 20, 0.3);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .id-stack-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   MODIFICADORES DE VERSÃO (TESTE CLIENTE)
+   ═══════════════════════════════════════════ */
+
+/* Badge de indicação de versão */
+.id-version-badge {
+  position: absolute;
+  top: 90px;
+  left: 2rem;
+  z-index: 99;
+  background: var(--cor-botao-fundo, #c8c0b0);
+  color: var(--cor-botao-texto, #0d0d0d);
+  font-family: var(--fonte-corpo);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+/* ── VERSÃO A: FLOATING EDITORIAL COVER ── */
+.id-version-a .id-intro__img-wrap {
+  transform: translate3d(0, var(--id-a-y, 0px), 0) scale(var(--id-a-zoom, 1));
+  opacity: var(--id-a-opacity, 1);
+}
+
+.id-version-a .id-intro__title {
+  opacity: var(--id-a-title-opacity, 1);
+  transform: translate3d(0, var(--id-a-title-y, 0px), 0);
+}
+
+/* ── VERSÃO B: CINEMATIC SHUTTER ── */
+.id-version-b .id-parallax-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(480px, 85vw);
+  height: min(640px, 80vh);
+  transform: translate3d(-50%, calc(-50% + var(--id-bg-parallax-y, 0px)), 0) scale(1.05);
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  inset: auto;
+}
+
+.id-version-b .id-intro__img-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(480px, 85vw);
+  height: min(640px, 80vh);
+  clip-path: inset(0 var(--id-b-crop, 30%) 0 var(--id-b-crop, 30%));
+  transform: translate3d(-50%, calc(-50% + var(--id-bg-parallax-y, 0px)), 0) scale(var(--id-b-zoom, 1));
+  opacity: var(--id-b-opacity, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.id-version-b .id-intro__title {
+  opacity: var(--id-b-title-opacity, 1);
+  transform: translate3d(0, var(--id-b-title-y, 0px), 0);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  z-index: 12;
+}
+
+/* Responsivo Versão B - Mantém Mobile Como Já Estava */
+@media (max-width: 768px) {
+  .id-version-b .id-intro__img-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    height: 380px;
+    transform: translate3d(-50%, -50%, 0) scale(var(--id-b-zoom, 1));
+    clip-path: inset(0 var(--id-b-crop, 30%) 0 var(--id-b-crop, 30%));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .id-version-b .id-parallax-bg {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0, var(--id-bg-parallax-y, 0px), 0) scale(1.05);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    inset: 0;
+  }
+}
+
+/* ── VERSÃO C: SPLIT-SCREEN PARALLAX ── */
+.id-version-c .id-intro {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  pointer-events: auto;
+}
+
+.id-version-c .id-intro__split-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  transform: translate3d(0, var(--id-c-left-y, 0px), 0);
+  opacity: var(--id-c-opacity, 1);
+  z-index: 11;
+  padding: 2rem;
+}
+
+.id-version-c .id-intro__split-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.id-version-c .id-intro__img-wrap {
+  position: relative;
+  width: clamp(240px, 80%, 400px);
+  height: clamp(340px, 80%, 550px);
+  transform: translate3d(0, var(--id-c-right-y, 0px), 0) scale(1.05);
+  opacity: var(--id-c-opacity, 1);
+}
+
+.id-version-c .id-intro__title {
+  position: relative;
+  text-align: left;
+  opacity: var(--id-c-title-opacity, 1);
+}
+
+/* Responsivo para Versão C */
+@media (max-width: 768px) {
+  .id-version-c .id-intro {
+    flex-direction: column;
+  }
+  .id-version-c .id-intro__split-left {
+    flex: 1;
+    order: 2;
+    background: transparent;
+    padding-top: 0;
+  }
+  .id-version-c .id-intro__split-right {
+    flex: 1.5;
+    order: 1;
+    background: transparent;
+  }
+}

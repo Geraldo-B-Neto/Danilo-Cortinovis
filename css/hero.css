@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════
+   SEÇÃO HERÓI — hero.css (refinado premium)
+═══════════════════════════════════════════ */
+
+.heroi {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  /* Suporte para mobile browsers */
+  display: grid;
+  overflow: hidden;
+}
+
+/* ── BACKGROUND VIDEO (Mobile Only) ── */
+.heroi__bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%) scale(1.8);
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ── IMAGEM ── */
+.heroi__foto {
+  display: none;
+  /* Oculta no mobile */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-inline: auto;
+  width: clamp(20rem, 85vw, 27rem);
+  height: auto;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
+}
+
+/* Fade lateral para integrar imagem */
+.heroi::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #000);
+  z-index: 1;
+  display: none;
+}
+
+/* ── RETÂNGULO DECORATIVO ── */
+.retangulo {
+  display: none;
+  /* Oculta no mobile */
+}
+
+/* ── RESPONSIVO ── */
+@media screen and (min-width: 1064px) {
+  .heroi__bio {
+    margin-left: 35%;
+  }
+
+  .heroi__bio2 {
+    margin-left: 50%;
+    color: red;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .heroi__bg-video {
+    display: none;
+    /* Esconde o vídeo no desktop */
+  }
+
+  .heroi {
+    margin-top: 2.5rem;
+    height: calc(100vh - 2.5rem);
+    /* Ajustado para caber na tela com o margin */
+  }
+
+  .heroi::after {
+    display: block;
+  }
+
+  .heroi__foto {
+    display: block;
+    /* Mostra no desktop */
+    width: 30.5rem;
+    top: auto;
+    left: 0rem;
+    right: auto;
+    margin-inline: 0;
+    bottom: 2.6rem;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .heroi__titulo-linha2 {
+    display: block;
+    text-align: right;
+  }
+
+  .retangulo {
+    display: block;
+    position: absolute;
+    top: -9rem;
+    right: -2rem;
+    width: 40%;
+    height: 18rem;
+    border: 0.5px var(--cor-borda) solid;
+    opacity: 0.4;
+  }
+
+  .heroi__conteudo {
+    padding: 0rem clamp(1.5rem, 5vw, 5rem);
+    justify-content: space-between;
+    /* Restaura comportamento no desktop */
+    gap: 0;
+  }
+
+  .heroi__bio {
+    margin-left: 35%;
+  }
+
+  .heroi__bio2 {
+    color: rebeccapurple;
+    margin-left: 50%;
+  }
+}
+
+/* ── CONTEÚDO ── */
+.heroi__conteudo {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Centralizado no mobile */
+  gap: 3rem;
+  /* Espaçamento entre blocos no mobile */
+  padding: 2rem clamp(1.25rem, 5vw, 5rem);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ── TÍTULO ── */
+.heroi__titulo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroi__titulo {
+  font-family: var(--fonte-display);
+  font-weight: 500;
+  /* Mais visibilidade */
+  text-transform: uppercase;
+  line-height: 0.85;
+  /* MAIS IMPACTO */
+  letter-spacing: -0.02em;
+  color: var(--cor-texto-claro);
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  text-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  /* Sombra para contraste */
+}
+
+.heroi__titulo-linha1,
+.heroi__titulo-linha2 {
+  font-size: clamp(4rem, 14vw, 10rem);
+  display: block;
+}
+
+.heroi__titulo-linha2 {
+  text-align: center;
+}
+
+@media screen and (min-width: 860px) {
+  .heroi__titulo-wrap {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .heroi__titulo {
+    text-align: left;
+    width: 100%;
+  }
+
+  .heroi__titulo-linha2 {
+    text-align: right;
+    width: 100%;
+  }
+}
+
+/* ── BIO ── */
+.heroi__bio,
+.heroi__bio2 {
+  font-family: var(--fonte-display);
+  font-weight: 400;
+  /* Aumentado para visibilidade */
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--cor-texto-claro);
+  margin-top: 0.9rem;
+  pointer-events: none;
+  display: block;
+  letter-spacing: 0.35em;
+  /* MAIS PREMIUM */
+  opacity: 1;
+  /* Opacidade total */
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  /* Contraste extra */
+}
+
+@media screen and (min-width: 860px) {
+
+  .heroi__bio,
+  .heroi__bio2 {
+    text-align: left;
+  }
+}
+
+.heroi__bio span,
+.heroi__bio2 span,
+.heroi__tagline span {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* ── RODAPÉ ── */
+.heroi__rodape {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 860px) {
+  .heroi__rodape {
+    margin-top: 2rem;
+    align-items: flex-end;
+  }
+}
+
+/* Tagline mais elegante */
+.heroi__tagline {
+  font-family: var(--fonte-display);
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  font-weight: 400;
+  /* Mais peso */
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cor-texto-claro);
+  opacity: 1;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Linha refinada */
+.heroi__divisor {
+  width: 100%;
+  max-width: 350px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  margin-block: 0.5rem;
+}
+
+/* ── BOTÕES (UPGRADE FORTE) ── */
+.heroi__botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 860px) {
+  .heroi__botoes {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: auto;
+    gap: 1rem;
+  }
+}
+
+.heroi__botao {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1.1rem 2rem;
+  background: #d6c3a3;
+  color: #000;
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 860px) {
+  .heroi__botao {
+    display: inline-block;
+    width: auto;
+    padding: 0.9rem 2.8rem;
+  }
+}
+
+.heroi__botao--secundario {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hover mais premium */
+.heroi__botao:hover,
+.heroi__botao:focus-visible {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.heroi__botao--secundario:hover,
+.heroi__botao--secundario:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   TICKER — refinado
+══════════════════════════════════════════ */
+
+.heroi__ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.6rem;
+  border-top: 1px solid rgba(200, 192, 176, 0.15);
+  overflow: hidden;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+}
+
+.heroi__ticker-faixa {
+  display: flex;
+  white-space: nowrap;
+  animation: heroi-ticker 32s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .heroi__ticker-faixa:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroi__ticker-faixa {
+    animation: none;
+  }
+}
+
+/* Texto do ticker mais refinado */
+.heroi__ticker-faixa span {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.6rem, 1vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.45);
+}
+
+/* Separador */
+.heroi__ticker-faixa span::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  background: rgba(200, 192, 176, 0.3);
+  border-radius: 50%;
+  margin: 0 clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Animação */
+@keyframes heroi-ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  /* Altura da navbar */
+}
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto-claro);
+  font-family: var(--fonte-corpo);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

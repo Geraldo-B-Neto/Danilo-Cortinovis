@@ -1,0 +1,459 @@
+/* ═══════════════════════════════════════════
+   GALERIA ANTES E DEPOIS — TRILHOS HORIZONTAIS
+   Design: Editorial Premium / Sentidos Opostos
+   Background: Pure Black (#000)
+   ═══════════════════════════════════════════ */
+
+.transform-trilhos {
+    background: #000 !important;
+    padding: clamp(4rem, 8vw, 8rem) 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Container do cabeçalho */
+.transform-trilhos__container {
+    width: 100%;
+}
+
+.transform-trilhos__header {
+    max-width: 800px;
+    margin: 0 auto clamp(3rem, 6vw, 5rem) auto;
+    text-align: center;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.transform-trilhos__eyebrow {
+    font-family: var(--fonte-mono);
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    color: var(--cor-destaque, #d6c3a3);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.transform-trilhos__titulo {
+    font-family: var(--fonte-display);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.transform-trilhos__titulo span {
+    font-family: var(--fonte-display);
+    font-style: italic;
+    color: var(--cor-destaque, #d6c3a3);
+}
+
+.transform-trilhos__subtitulo {
+    font-family: var(--fonte-corpo);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: var(--cor-texto-muted, #a0a0a0);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Trilhos Wrappers - Custom drag scrollable overflow */
+.trilho-wrap {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+    position: relative;
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    cursor: grab;
+    display: flex;
+}
+
+.trilho-wrap::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.trilho-wrap:active {
+    cursor: grabbing;
+}
+
+/* Gradientes de sombra nas laterais para fusão com o fundo preto */
+.transform-trilhos::before,
+.transform-trilhos::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(50px, 15vw, 250px);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.transform-trilhos::before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.transform-trilhos::after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Linha com os cards de imagem */
+.trilho-linha {
+    display: flex;
+    gap: clamp(20px, 4vw, 40px);
+    width: max-content;
+    will-change: transform;
+}
+
+/* Card de transformação */
+.trilho-card {
+    background: #090909;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: clamp(10px, 2vw, 18px);
+    border-radius: 12px;
+    width: clamp(320px, 28vw, 480px);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    user-select: none;
+}
+
+.trilho-card:hover {
+    transform: scale(1.02);
+    border-color: rgba(214, 195, 163, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Bloco principal de comparação side-by-side */
+.trilho-card__comparacao {
+    display: flex;
+    gap: clamp(6px, 1.5vw, 10px);
+    position: relative;
+    height: clamp(200px, 18vw, 320px);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Lados da comparação */
+.trilho-card__lado {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.trilho-card__lado img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trilho-card:hover .trilho-card__lado img {
+    transform: scale(1.03);
+}
+
+
+/* Divisória central fina */
+.trilho-card__div {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    height: 100%;
+    flex-shrink: 0;
+}
+
+/* Sinalizadores de Antes e Depois (Tags) */
+.trilho-card__sinalizador {
+    position: absolute;
+    bottom: clamp(10px, 2vw, 14px);
+    z-index: 5;
+    font-family: var(--fonte-mono);
+    font-size: clamp(0.55rem, 1.2vw, 0.65rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 4px clamp(8px, 1.5vw, 12px);
+    border-radius: 3px;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.trilho-card__sinalizador--antes {
+    left: clamp(10px, 2vw, 14px);
+    background: rgba(10, 10, 10, 0.85);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.trilho-card__sinalizador--depois {
+    right: clamp(10px, 2vw, 14px);
+    background: var(--cor-destaque, #d6c3a3);
+    color: #000;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Legenda técnica inferior */
+.trilho-card__legenda {
+    margin-top: clamp(10px, 2vw, 16px);
+    font-family: var(--fonte-mono);
+    font-size: clamp(0.6rem, 1.3vw, 0.72rem);
+    color: var(--cor-texto-muted, #8a8a8a);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.4s ease;
+}
+
+.trilho-card:hover .trilho-card__legenda {
+    color: var(--cor-destaque, #d6c3a3);
+}
+
+/* ════════════════════════════════════════
+   3. MODAL LIGHTBOX COM SLIDER DE ARRASTAR
+   ════════════════════════════════════════ */
+.trilho-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s;
+    padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.trilho-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.trilho-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.trilho-modal__content {
+    position: relative;
+    z-index: 1010;
+    width: 100%;
+    max-width: 900px;
+    background: #080808;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+    transform: scale(0.92);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trilho-modal.is-active .trilho-modal__content {
+    transform: scale(1);
+}
+
+/* Botão Fechar */
+.trilho-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1020;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.trilho-modal__close:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: rotate(90deg);
+}
+
+.trilho-modal__close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Slider interativo */
+.trilho-modal__slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #000;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Imagens do Slider */
+.trilho-modal__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.trilho-modal__img--after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* Imagem de "Antes" com corte dinâmico */
+.trilho-modal__img-before-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 2;
+    overflow: hidden;
+    will-change: width;
+}
+
+.trilho-modal__img-before-wrap .trilho-modal__img--before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    max-width: none;
+}
+
+/* Linha divisória */
+.trilho-modal__divisor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: #fff;
+    z-index: 3;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Botão/Alça central de arrasto */
+.trilho-modal__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    z-index: 4;
+}
+
+.trilho-modal__handle svg {
+    width: 20px;
+    height: 20px;
+    color: #000;
+}
+
+/* Badges ANTES / DEPOIS dentro do Slider */
+.trilho-modal__badge {
+    position: absolute;
+    top: 20px;
+    z-index: 5;
+    font-family: var(--fonte-mono);
+    font-size: clamp(0.55rem, 1.2vw, 0.65rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 6px 12px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.trilho-modal__badge--antes {
+    left: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trilho-modal__badge--depois {
+    right: 20px;
+    background: var(--cor-destaque, #d6c3a3);
+    color: #000;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Rodapé das legendas no Modal */
+.trilho-modal__footer {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: #080808;
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.trilho-modal__title {
+    font-family: var(--fonte-display);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.trilho-modal__desc {
+    font-family: var(--fonte-corpo);
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: var(--cor-texto-muted, #a0a0a0);
+    line-height: 1.55;
+}
+
+/* Responsividade Mobile para o Modal */
+@media (max-width: 576px) {
+    .trilho-modal {
+        padding: 0.8rem;
+    }
+
+    .trilho-modal__slider {
+        aspect-ratio: 1/1;
+        /* Quadrada no mobile para renderizar melhor */
+    }
+
+    .trilho-modal__close {
+        top: 15px;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .trilho-modal__handle {
+        width: 44px;
+        height: 44px;
+    }
+}

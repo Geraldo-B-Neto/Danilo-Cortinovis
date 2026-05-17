@@ -1,0 +1,252 @@
+/* ═══════════════════════════════════════════
+   TRANSFORMAÇÃO IMERSIVA — v2.0
+   Design: Quiet Luxury / Brutalist Engine
+   Engine: GPU-Accelerated Scroll Mapping
+   Author: Antigravity
+   ═══════════════════════════════════════════ */
+
+.transform-immersive {
+  position: relative;
+  background: var(--cor-fundo);
+  /* Altura total controlada por JS (ex: 400vh) */
+  width: 100%;
+  overflow: clip; /* Melhor performance que overflow: hidden */
+}
+
+.transform-immersive__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── 1. Parallax Background ── */
+.transform-immersive__parallax-bg {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.transform-immersive__parallax-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.4);
+  /* O movimento será controlado via JS no --bg-parallax-y */
+  transform: translate3d(0, var(--bg-parallax-y, 0), 0);
+  will-change: transform;
+}
+
+/* ── 2. Intro Phase (Zoom) ── */
+.transform-immersive__intro {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  /* Controlado pelo progress da fase 1 (0% - 30%) */
+  opacity: var(--intro-opacity, 1);
+  visibility: var(--intro-visibility, visible);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.transform-immersive__intro-title {
+  font-family: var(--fonte-display);
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 300;
+  color: var(--cor-texto-claro);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  z-index: 12;
+  /* Fade out conforme o zoom aumenta */
+  transform: translate3d(0, var(--title-y, 0), 0);
+  opacity: var(--title-opacity, 1);
+}
+
+.transform-immersive__intro-img-wrap {
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  overflow: hidden;
+  z-index: 11;
+  border: 1px solid rgba(214, 195, 163, 0.2);
+  /* Zoom progressivo controlado via --intro-zoom */
+  transform: translate3d(-50%, -50%, 0) scale(var(--intro-zoom, 1));
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+}
+
+.transform-immersive__intro-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── 3. Horizontal Phase (30% - 100%) ── */
+.transform-immersive__horizontal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-left: 20vw; /* Início do trilho */
+  /* Translação horizontal controlada via --horizontal-x */
+  transform: translate3d(var(--horizontal-x, 100%), 0, 0);
+  opacity: var(--horizontal-opacity, 0);
+  will-change: transform, opacity;
+}
+
+.transform-immersive__trilho {
+  display: flex;
+  gap: 15vw;
+  align-items: center;
+}
+
+/* ── 4. Antes e Depois Cards ── */
+.immersive-card {
+  flex-shrink: 0;
+  width: clamp(300px, 40vw, 550px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.immersive-card__slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: #111;
+  overflow: hidden;
+  cursor: ew-resize;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.immersive-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.immersive-card__img--depois {
+  z-index: 1;
+}
+
+.immersive-card__img--antes {
+  z-index: 2;
+  /* O pulo do gato: clip-path baseado na exposição */
+  clip-path: inset(0 calc(100% - var(--exposure, 50%)) 0 0);
+  filter: grayscale(0.5);
+}
+
+.immersive-card__divisor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--exposure, 50%);
+  width: 2px;
+  background: #fff;
+  z-index: 3;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.immersive-card__handle {
+  position: absolute;
+  top: 50%;
+  left: var(--exposure, 50%);
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+.immersive-card__handle::before,
+.immersive-card__handle::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.immersive-card__handle::before { border-right: 7px solid #000; margin-right: 4px; }
+.immersive-card__handle::after { border-left: 7px solid #000; margin-left: 4px; }
+
+.immersive-card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(214, 195, 163, 0.2);
+  padding-bottom: 1rem;
+}
+
+.immersive-card__servico {
+  font-family: var(--fonte-display);
+  font-size: 1.8rem;
+  color: var(--cor-texto-claro);
+  margin: 0;
+}
+
+.immersive-card__meta {
+  font-family: var(--fonte-corpo);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #d6c3a3;
+  margin: 0;
+}
+
+/* ── HUD / Scrollers Triggers (Internal) ── */
+.transform-immersive__triggers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .transform-immersive__intro-img-wrap {
+    width: 260px;
+    height: 380px;
+  }
+  
+  .transform-immersive__horizontal {
+    padding-left: 10vw;
+  }
+  
+  .immersive-card {
+    width: 80vw;
+  }
+}

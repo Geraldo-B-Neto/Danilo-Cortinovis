@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════════
+   ANIMAÇÕES GLOBAIS — Reveal Engine
+   ═══════════════════════════════════════════ */
+
+/* ── 1. Reveal Core ── */
+[class*="reveal-"] {
+  opacity: 0;
+  transition-property: opacity, transform, filter;
+  transition-duration: 1.2s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+[class*="reveal-"].in-view {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* ── 2. Reveal Variations ── */
+.reveal-up {
+  transform: translateY(30px);
+}
+
+.reveal-down {
+  transform: translateY(-30px);
+}
+
+.reveal-left {
+  transform: translateX(-30px);
+}
+
+.reveal-right {
+  transform: translateX(30px);
+}
+
+.reveal-blur {
+  filter: blur(10px);
+  transform: scale(0.98);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
+}
+
+/* ── 3. Staggered Delays ── */
+[class*="reveal-"][style*="--delay"] {
+  transition-delay: var(--delay);
+}
+
+/* ── Keyframes Legados ── */
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes entrar-direita {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entrar-esquerda {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sair-esquerda {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-2rem); }
+}
+
+@keyframes sair-direita {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(2rem); }
+}
+
+/* Classes de animação para itens de serviço (Essenciais para barbearia.js) */
+.servico-item--saindo-esquerda  { animation: sair-esquerda  0.3s ease forwards; }
+.servico-item--saindo-direita   { animation: sair-direita   0.3s ease forwards; }
+.servico-item--entrando-direita { animation: entrar-direita 0.35s ease forwards; }
+.servico-item--entrando-esquerda{ animation: entrar-esquerda 0.35s ease forwards; }
+
+/* ── Transições para elementos do carrossel de depoimentos ── */
+.depoimento__citacao,
+.depoimento__nome-autor,
+.depoimento__foto-principal,
+.cartao-combo__foto,
+.cartao-combo__rotulo,
+.cartao-combo__emblema {
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado saindo — texto */
+.depoimento__citacao.saindo,
+.depoimento__nome-autor.saindo,
+.cartao-combo__rotulo.saindo,
+.cartao-combo__emblema.saindo {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* Estado saindo — fotos */
+.depoimento__foto-principal.saindo,
+.cartao-combo__foto.saindo {
+  opacity: 0;
+  transform: scale(0.95);
+}

@@ -1,0 +1,121 @@
+.rodape {
+      background: #080808;
+      border-top: 1px solid rgba(200,192,176,0.1);
+      padding: clamp(3rem, 8vw, 5.5rem) clamp(1.25rem, 6vw, 4rem) 0;
+    }
+ 
+    .rodape__corpo {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(200,192,176,0.08);
+    }
+ 
+    .rodape__marca-nome {
+      font-family: var(--fonte-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 0.95;
+      letter-spacing: 0.02em; color: var(--cor-card);
+      margin-bottom: 1.25rem;
+    }
+ 
+    .rodape__marca-descricao {
+      font-family: var(--fonte-corpo);
+      font-size: 0.82rem; font-weight: 400;
+      line-height: 1.75;
+      color: rgba(240,236,228,0.38);
+      max-width: 280px; margin-bottom: 1.75rem;
+    }
+ 
+    .rodape__social { display: flex; gap: 0.75rem; }
+ 
+    .rodape__social-link {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(200,192,176,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(200,192,176,0.45);
+      transition: border-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+    }
+ 
+    .rodape__social-link svg {
+      width: 15px; height: 15px;
+      stroke: currentColor; fill: none; stroke-width: 1.5px;
+    }
+ 
+    .rodape__social-link:hover { border-color: var(--cor-card); color: var(--cor-card); }
+ 
+    .rodape__coluna-titulo {
+      font-family: var(--fonte-corpo);
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--cor-card); margin-bottom: 1.5rem;
+    }
+ 
+    .rodape__lista { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+ 
+    .rodape__lista a {
+      font-family: var(--fonte-corpo);
+      font-size: 0.82rem; font-weight: 400;
+      color: rgba(240,236,228,0.4);
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+ 
+    .rodape__lista a:hover { color: var(--cor-card); }
+ 
+    .rodape__contato-item {
+      display: flex; align-items: flex-start;
+      gap: 0.6rem; margin-bottom: 0.9rem;
+    }
+ 
+    .rodape__contato-item svg {
+      width: 14px; height: 14px;
+      stroke: rgba(200,192,176,0.4);
+      fill: none; stroke-width: 1.5px;
+      flex-shrink: 0; margin-top: 2px;
+    }
+ 
+    .rodape__contato-item p {
+      font-family: var(--fonte-corpo);
+      font-size: 0.82rem; font-weight: 400;
+      color: rgba(240,236,228,0.4); line-height: 1.55;
+    }
+ 
+    .rodape__contato-item a {
+      color: rgba(240,236,228,0.4);
+      text-decoration: none; transition: color 0.2s ease;
+    }
+ 
+    .rodape__contato-item a:hover { color: var(--cor-card); }
+ 
+    .rodape__base {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 1.35rem 0; gap: 1rem;
+    }
+ 
+    .rodape__base p,
+    .rodape__base a {
+      font-family: var(--fonte-corpo);
+      font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(240,236,228,0.2);
+      text-decoration: none; text-transform: uppercase;
+    }
+ 
+    .rodape__base a:hover { color: rgba(240,236,228,0.5); }
+ 
+    .rodape__base-links { display: flex; gap: 1.5rem; }
+ 
+    @media (max-width: 900px) {
+      .rodape__corpo { grid-template-columns: 1fr 1fr; }
+      .rodape__marca { grid-column: span 2; }
+    }
+ 
+    @media (max-width: 560px) {
+      .rodape__corpo { grid-template-columns: 1fr; gap: 2.25rem; }
+      .rodape__marca { grid-column: span 1; }
+      .rodape__base { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    }

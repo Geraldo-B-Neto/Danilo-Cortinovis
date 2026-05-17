@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════
+   INSTAGRAM — instagram.css
+═══════════════════════════════════════════ */
+
+.instagram {
+  padding: clamp(3.5rem, 9vw, 6rem) clamp(1.25rem, 6vw, 4rem);
+  background: var(--cor-fundo);
+}
+
+/* ── Cabeçalho ── */
+.instagram__cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.instagram__rotulo {
+  font-family: var(--fonte-corpo);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.45);
+  margin-bottom: 0.45rem;
+}
+
+.instagram__titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  font-weight: 400;
+  color: var(--cor-card);
+  line-height: 1.1;
+}
+
+.instagram__titulo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.instagram__titulo a:hover {
+  color: var(--cor-texto-claro);
+}
+
+.instagram__icone {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.instagram__botao-perfil {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fonte-corpo);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 192, 176, 0.5);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 192, 176, 0.18);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.instagram__botao-perfil:hover {
+  color: var(--cor-card);
+  border-color: var(--cor-card);
+}
+
+.instagram__divisor {
+  border: none;
+  border-top: 1px solid rgba(200, 192, 176, 0.1);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Grade estática ── */
+.instagram__grade--estatico {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.insta-post {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+.insta-post__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: grayscale(12%);
+}
+
+.insta-post:hover .insta-post__img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.insta-post__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 13, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: background 0.3s ease;
+}
+
+.insta-post:hover .insta-post__overlay {
+  background: rgba(13, 13, 13, 0.5);
+}
+
+.insta-post__icone {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--cor-texto-claro);
+  font-family: var(--fonte-corpo);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.insta-post__icone svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--cor-card);
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.insta-post:hover .insta-post__icone {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.insta-post__tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(13, 13, 13, 0.72);
+  color: var(--cor-card);
+  font-family: var(--fonte-corpo);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.insta-post:hover .insta-post__tag {
+  opacity: 1;
+}
+
+/* Post destaque: ocupa 2×2 */
+.insta-post--destaque {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Rodapé do feed */
+.instagram__ver-mais {
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instagram__ver-mais a {
+  font-family: var(--fonte-corpo);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-botao-texto);
+  background: var(--cor-botao-fundo);
+  padding: 0.7rem 2rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.instagram__ver-mais a:hover {
+  background: var(--cor-texto-claro);
+}
+
+/* ── Responsividade ── */
+@media (max-width: 600px) {
+  .instagram__grade--estatico {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insta-post--destaque {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 380px) {
+  .instagram__grade--estatico {
+    grid-template-columns: 1fr;
+  }
+
+  .insta-post--destaque {
+    grid-column: span 1;
+  }
+}

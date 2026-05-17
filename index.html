@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danilo Cortinovis — Barbeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/transform_stack.css" />
+  <!-- <link rel="stylesheet" href="css/transform_options.css" /> -->
+
+  <!-- Engine de Animação -->
+  <script src="js/animations.js" defer></script>
+</head>
+
+<body>
+
+
+
+  <header>
+    <!-- ════════════════════════ NAVBAR ════════════════════════ -->
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegação principal">
+
+      <a href="#" class="navbar__logo" aria-label="Danilo Cortinovis — Barbeiro">
+        <div class="navbar__logo-monograma" aria-hidden="true">DC</div>
+        <div class="navbar__logo-nome">
+          <span>Danilo Cortinovis</span>
+          <span>Barbeiro</span>
+        </div>
+      </a>
+
+      <ul class="navbar__nav" role="list">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#biografia">Biografia</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <a href="#agendar" class="navbar__cta" aria-label="Agendar horário">Agendar</a>
+
+      <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false"
+        aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Drawer mobile -->
+    <div class="navbar__drawer" id="drawer" aria-hidden="true">
+      <ul class="navbar__drawer-nav" role="list">
+        <li><a href="#servicos" class="drawer-link">Serviços</a></li>
+        <li><a href="#biografia" class="drawer-link">Biografia</a></li>
+        <li><a href="#sobre" class="drawer-link">Sobre</a></li>
+        <li><a href="#instagram" class="drawer-link">Instagram</a></li>
+        <li><a href="#contato" class="drawer-link">Contato</a></li>
+      </ul>
+      <a href="#agendar" class="navbar__drawer-cta drawer-link" aria-label="Agendar horário">
+        Agendar agora
+      </a>
+    </div>
+
+  </header>
+
+
+
+
+  <main>
+    <!-- ════ SEÇÃO 1 — HERÓI ════ -->
+
+    <section class="heroi" aria-label="Danilo Cortinovis — Barbeiro">
+
+      <!-- Background Video (Apenas Mobile) -->
+      <iframe class="heroi__bg-video"
+        src="https://player.vimeo.com/video/1189229317?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&autopause=0&player_id=0&app_id=58479"
+        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" aria-hidden="true">
+      </iframe>
+
+      <img class="heroi__foto reveal-scale" src="assets/daniloHero2.svg"
+        srcset="assets/daniloHero5.png 480w, assets/daniloHero2.svg 1080w" sizes="(max-width: 480px) 480px, 1080px"
+        alt="Danilo Cortinovis, barbeiro, segurando uma navalha" loading="eager" />
+
+      <div class="retangulo"></div>
+
+
+      <div class="heroi__conteudo">
+
+        <!-- Título + bio ancorada abaixo de DANILO -->
+        <div class="heroi__titulo-wrap">
+          <h1 class="heroi__titulo" aria-label="Danilo Cortinovis">
+            <span class="heroi__titulo-linha1 reveal-left" style="--delay: 100ms;">Danilo</span>
+            <span class="heroi__titulo-linha2 reveal-right" style="--delay: 300ms;">Cortinovis</span>
+          </h1>
+
+        </div>
+
+        <!--
+                Bio: 2 linhas diretas, sem exagero.
+                Fica no vão vazio entre "DANILO" e a foto.
+                Edite o texto conforme o Danilo preferir.
+              -->
+        <br>
+
+        <p class="heroi__bio reveal-up" style="--delay: 500ms;" aria-label="Sobre Danilo Cortinovis">
+          REGISTRO CNPB: <span>44563840</span><br>
+          INSTAGRAM: <a href="https://www.instagram.com/barbeiro_cortinovis/" target="_blank" rel="noopener noreferrer"
+            style="color: #d6c3a3; text-decoration: none; border-bottom: 1px solid rgba(214, 195, 163, 0.4); transition: border-color 0.3s;"
+            onmouseover="this.style.borderColor='#fff'"
+            onmouseout="this.style.borderColor='rgba(214, 195, 163, 0.4)'">@barbeiro_cortinovis</a>
+        </p>
+        <p class="heroi__bio2 reveal-up" style="--delay: 600ms;" aria-label="Sobre Danilo Cortinovis">
+          PRECISÃO, ESTILO E PRESENÇA
+        </p>
+
+
+        <!-- Rodapé: tagline + divisor + CTA -->
+        <footer class="heroi__rodape reveal-up" style="--delay: 800ms;">
+
+          <p class="heroi__tagline">Elevando sua autoestima desde <span>2019</span></p>
+          <hr class="heroi__divisor" aria-hidden="true" />
+          <div class="heroi__botoes">
+            <a href="#agendar" class="heroi__botao" aria-label="Agende seu horário no barbeiro">
+              Agende seu horário
+            </a>
+            <a href="#servicos" class="heroi__botao heroi__botao--secundario" aria-label="Ver serviços da barbearia">
+              Nossos Serviços
+            </a>
+          </div>
+        </footer>
+
+      </div>
+
+      <div class="heroi__ticker" aria-hidden="true" role="presentation">
+        <div class="heroi__ticker-faixa">
+          <span>Formado em Barbearia Clássica &nbsp;&nbsp;·&nbsp;&nbsp; Desde 2019 &nbsp;&nbsp;·&nbsp;&nbsp; Degradê
+            Americano &nbsp;&nbsp;·&nbsp;&nbsp; Barba no Aço &nbsp;&nbsp;·&nbsp;&nbsp; Acabamento Navalha
+            &nbsp;&nbsp;·&nbsp;&nbsp; Corte Clássico &nbsp;&nbsp;·&nbsp;&nbsp; Platinado Masculino
+            &nbsp;&nbsp;·&nbsp;&nbsp; Pompadour Moderno &nbsp;&nbsp;·&nbsp;&nbsp; +500 Clientes Fidelizados
+            &nbsp;&nbsp;·&nbsp;&nbsp; Patrocínio, MG &nbsp;&nbsp;·&nbsp;&nbsp; Especialização SP 2022
+            &nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Formado em Barbearia Clássica &nbsp;&nbsp;·&nbsp;&nbsp; Desde 2019 &nbsp;&nbsp;·&nbsp;&nbsp; Degradê
+            Americano &nbsp;&nbsp;·&nbsp;&nbsp; Barba no Aço &nbsp;&nbsp;·&nbsp;&nbsp; Acabamento Navalha
+            &nbsp;&nbsp;·&nbsp;&nbsp; Corte Clássico &nbsp;&nbsp;·&nbsp;&nbsp; Platinado Masculino
+            &nbsp;&nbsp;·&nbsp;&nbsp; Pompadour Moderno &nbsp;&nbsp;·&nbsp;&nbsp; +500 Clientes Fidelizados
+            &nbsp;&nbsp;·&nbsp;&nbsp; Patrocínio, MG &nbsp;&nbsp;·&nbsp;&nbsp; Especialização SP 2022
+            &nbsp;&nbsp;·&nbsp;&nbsp;</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════ SEÇÃO 1.5A — BIOGRAFIA: OPÇÃO 1 (GRID DE ARQUIVO) ════ -->
+    <section class="biografia-grid" id="biografia" aria-label="Biografia Danilo Cortinovis — Opção 1: Grid de Arquivo">
+      <div class="biografia-grid__container">
+
+        <!-- Top header: Eyebrow + Name -->
+        <header class="biografia-grid__header reveal-up">
+          <h2 class="biografia-grid__titulo">
+            Danilo <span>Cortinovis</span>
+          </h2>
+        </header>
+
+        <!-- Main body: Two text columns + Image -->
+        <div class="biografia-grid__body">
+          <div class="biografia-grid__textos reveal-left">
+            <div class="biografia-grid__col-esquerda">
+              <h3>RIGOR<br>GEOMÉTRICO.<br>EXECUÇÃO<br>MINIMALISTA.</h3>
+            </div>
+            <div class="biografia-grid__col-direita">
+              <span class="biografia-grid__sub-eyebrow">AFASTADO DE TENDÊNCIAS.</span>
+              <p>Desde 2019, aplicando alta precisão e desenhando identidades sob medida na cadeira.</p>
+              <p>Trabalho focado na alquimia entre o corte clássico e o visagismo moderno, priorizando a personalização
+                total do serviço.</p>
+            </div>
+          </div>
+
+          <div class="biografia-grid__midia reveal-right">
+            <div class="biografia-grid__moldura">
+              <img src="assets/DaniloSegurandoBigode.png" alt="Danilo Cortinovis" class="biografia-grid__foto"
+                loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer specs -->
+        <footer class="biografia-grid__footer reveal-up">
+          <div class="biografia-grid__spec">PATROCÍNIO - MG</div>
+          <div class="biografia-grid__spec text-right">NAVALHA & VISAGISMO</div>
+        </footer>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- ════ SEÇÃO 2A — CONCEITO A: FLOATING EDITORIAL COVER (COMENTADA POR SEGURANÇA) ════ -->
+    <!--
+    <section class="identidade-immersive id-version-a" id="sobre-a" aria-label="Identidade Danilo Cortinovis — Opção A">
+      <div class="identidade-immersive__sticky">
+        <div class="id-parallax-bg" aria-hidden="true">
+          <img class="id-parallax-bg__video" src="assets/daniloAneis.png" alt="">
+        </div>
+
+        <div class="id-intro">
+          <div class="id-intro__img-wrap">
+            <img src="assets/daniloMoto.png" class="id-intro__img" alt="Danilo">
+          </div>
+          <h2 class="id-intro__title">A Essência<br>do Estilo</h2>
+        </div>
+
+        <div class="id-horizontal">
+          <div class="id-trilho">
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229866?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src=""
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="danilo-video"></iframe></div>
+            </div>
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229317?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src=""
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Danilo-video-cobra"></iframe>
+              </div>
+            </div>
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229866?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src=""
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="danilo-video"></iframe></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="id-stacking">
+          <div class="id-stack-card" data-origin="left">
+            <img src="assets/daniloMoto.png" alt="">
+            <span class="id-stack-card__label">Estilo Pessoal</span>
+          </div>
+          <div class="id-stack-card" data-origin="right">
+            <img src="assets/daniloEspelho.png" alt="">
+            <span class="id-stack-card__label">Artesanato</span>
+          </div>
+          <div class="id-stack-card" data-origin="top-left">
+            <img src="assets/daniloAneis.png" alt="">
+            <span class="id-stack-card__label">Ambiente</span>
+          </div>
+          <div class="id-stack-card" data-origin="top-right">
+            <img src="assets/daniloDCostas.png" alt="">
+            <span class="id-stack-card__label">O Barbeiro</span>
+          </div>
+          <div class="id-stack-card" data-origin="bottom">
+            <img src="assets/daniloEMulher.png" alt="">
+            <span class="id-stack-card__label">Liberdade</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- ════ SEÇÃO 2 — IDENTIDADE IMERSIVA (CINEMATIC SHUTTER - SELECIONADA) ════ -->
+    <section class="identidade-immersive id-version-b" id="sobre" aria-label="Identidade Danilo Cortinovis">
+      <div class="identidade-immersive__sticky">
+
+        <div class="id-parallax-bg" aria-hidden="true">
+          <img class="id-parallax-bg__video" src="assets/daniloAneis.png" alt="">
+        </div>
+
+        <!-- 1. Phase 1: Cinematic Shutter -->
+        <div class="id-intro">
+          <div class="id-intro__img-wrap">
+            <!-- Imagem para Desktop (Mãos/Anéis que se integram ao fundo) -->
+            <img src="assets/daniloAneis.png" class="id-intro__img id-intro__img--desktop" alt="Danilo Anéis">
+            <!-- Imagem para Mobile (Danilo na Moto) -->
+            <img src="assets/daniloMoto.png" class="id-intro__img id-intro__img--mobile" alt="Danilo Moto">
+          </div>
+          <h2 class="id-intro__title">A Essência<br>do Estilo</h2>
+        </div>
+
+        <!-- 2. Phase 2: Horizontal Scroll (Vídeos Verticais) -->
+        <div class="id-horizontal">
+          <div class="id-trilho">
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229866?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src="" frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="danilo-video"></iframe></div>
+              <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229317?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src="" frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Danilo-video-cobra"></iframe>
+              </div>
+              <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="id-slide-card">
+              <div class="id-slide-card__video" style="padding:75% 0 0 0;position:relative;"><iframe
+                  data-src="https://player.vimeo.com/video/1189229866?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1"
+                  src="" frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" title="danilo-video"></iframe></div>
+              <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Phase 3: Spatial Stacking -->
+        <div class="id-stacking">
+          <div class="id-stack-card" data-origin="left">
+            <img src="assets/daniloMoto.png" alt="">
+            <span class="id-stack-card__label">Estilo Pessoal</span>
+          </div>
+          <div class="id-stack-card" data-origin="right">
+            <img src="assets/daniloEspelho.png" alt="">
+            <span class="id-stack-card__label">Artesanato</span>
+          </div>
+          <div class="id-stack-card" data-origin="top-left">
+            <img src="assets/daniloAneis.png" alt="">
+            <span class="id-stack-card__label">Ambiente</span>
+          </div>
+          <div class="id-stack-card" data-origin="top-right">
+            <img src="assets/daniloDCostas.png" alt="">
+            <span class="id-stack-card__label">O Barbeiro</span>
+          </div>
+          <div class="id-stack-card" data-origin="bottom">
+            <img src="assets/daniloEMulher.png" alt="">
+            <span class="id-stack-card__label">Liberdade</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="bastidores" id="instagram" aria-labelledby="titulo-bastidores">
+
+      <header class="bastidores__header reveal-up" style="--delay: 100ms;">
+        <div>
+          <p class="bastidores__eyebrow">Conteúdo real</p>
+          <h2 class="bastidores__titulo" id="titulo-bastidores">
+            Os<br>bastidores
+          </h2>
+        </div>
+        <a href="https://www.instagram.com/barbeiro_cortinovis/" target="_blank" rel="noopener noreferrer"
+          class="bastidores__ver-todos" aria-label="Ver todos os reels no Instagram">
+          Ver no Instagram
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12H19M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </header>
+
+      <div class="bastidores__trilho-wrap">
+        <div class="bastidores__trilho" role="list" aria-label="Vídeos e Reels de bastidores">
+
+          <!-- Card 1 — Reel de corte -->
+          <a class="reel-card reveal-up" style="--delay: 200ms;" href="https://www.instagram.com/barbeiro_cortinovis/"
+            target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Reel: degradê em 60 segundos">
+            <div class="reel-card__thumb">
+              <img class="reel-card__img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80"
+                alt="Thumbnail: degradê americano sendo executado" loading="lazy" />
+              <div class="reel-card__play">
+                <div class="reel-card__play-circulo">
+                  <div class="reel-card__play-triangulo"></div>
+                </div>
+              </div>
+              <span class="reel-card__badge">Reel</span>
+              <span class="reel-card__duracao">0:58</span>
+            </div>
+            <p class="reel-card__legenda">Degradê em 60 segundos</p>
+          </a>
+
+
+
+          <!-- Card 3 — Reel da moto -->
+          <a class="reel-card reveal-up" style="--delay: 300ms;" href="https://www.instagram.com/barbeiro_cortinovis/"
+            target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Reel: passeio de moto">
+            <div class="reel-card__thumb">
+              <img class="reel-card__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+                alt="Thumbnail: passeio de moto" loading="lazy" />
+              <div class="reel-card__play">
+                <div class="reel-card__play-circulo">
+                  <div class="reel-card__play-triangulo"></div>
+                </div>
+              </div>
+              <span class="reel-card__badge">Estilo</span>
+              <span class="reel-card__duracao">1:12</span>
+            </div>
+            <p class="reel-card__legenda">Fim de semana em estrada</p>
+          </a>
+
+          <!-- Card 4 — Reel de barba -->
+          <a class="reel-card reveal-up" style="--delay: 400ms;" href="https://www.instagram.com/barbeiro_cortinovis/"
+            target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Reel: barba no aço">
+            <div class="reel-card__thumb">
+              <img class="reel-card__img" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80"
+                alt="Thumbnail: barba sendo feita com navalha" loading="lazy" />
+              <div class="reel-card__play">
+                <div class="reel-card__play-circulo">
+                  <div class="reel-card__play-triangulo"></div>
+                </div>
+              </div>
+              <span class="reel-card__badge">Reel</span>
+              <span class="reel-card__duracao">0:45</span>
+            </div>
+            <p class="reel-card__legenda">Navalha e precisão</p>
+          </a>
+
+          <!-- Card 5 — Bastidor do dia -->
+          <a class="reel-card reveal-up" style="--delay: 500ms;" href="https://www.instagram.com/barbeiro_cortinovis/"
+            target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Reel: dia na barbearia">
+            <div class="reel-card__thumb">
+              <img class="reel-card__img" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80"
+                alt="Thumbnail: um dia completo na barbearia" loading="lazy" />
+              <div class="reel-card__play">
+                <div class="reel-card__play-circulo">
+                  <div class="reel-card__play-triangulo"></div>
+                </div>
+              </div>
+              <span class="reel-card__badge">Vlog</span>
+              <span class="reel-card__duracao">2:30</span>
+            </div>
+          </a>
+        </div><!-- /.bastidores__trilho -->
+      </div><!-- /.bastidores__trilho-wrap -->
+
+      <div class="bastidores__scroll-hint" aria-hidden="true">
+        <span class="bastidores__scroll-linha"></span>
+        <span>Arraste para ver mais</span>
+      </div>
+
+    </div><!-- /.bastidores -->
+
+
+
+
+    <!-- ════ SEÇÃO 3 — DEPOIMENTO DO CLIENTE ════ -->
+
+    <section class="depoimento" aria-labelledby="titulo-depoimento">
+
+      <!-- Col 1: Título fixo + contador -->
+      <div class="depoimento__titulo-col reveal-left" style="--delay: 100ms;">
+
+        <p class="depoimento__eyebrow">Relato do cliente</p>
+
+        <h2 class="depoimento__titulo" id="titulo-depoimento">
+          Quem<br>
+          confia<br>
+          encontra<br>
+          sofisticação
+        </h2>
+
+        <div class="depoimento__contador-wrap" aria-hidden="true">
+          <div class="depoimento__linha-vertical"></div>
+          <p class="depoimento__contador-num" id="depContadorNum">01</p>
+          <p class="depoimento__contador-total" id="depContadorTotal">— / 03</p>
+        </div>
+
+      </div>
+
+      <!-- Col 2: Foto full-bleed + texto sobreposto -->
+      <div class="depoimento__visual-col reveal-right" style="--delay: 300ms;">
+
+        <!-- Foto de fundo — src preenchido pelo JS com o dado do slide ativo -->
+        <img class="dep-foto-bg" id="depFotoBg" src="" alt="" aria-hidden="true" loading="eager" />
+
+        <!-- Gradiente que garante leitura -->
+        <div class="dep-gradiente" aria-hidden="true"></div>
+
+        <!-- Botão expandir -->
+        <button class="dep-expandir-btn" id="depExpandir" type="button" aria-label="Ver foto em detalhe">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+          </svg>
+        </button>
+
+        <!-- Carousel de citações -->
+        <div class="dep-track-wrap">
+          <div class="dep-track" id="depTrack">
+
+            <!-- ─────────────── Slide 1 ─────────────── -->
+            <div class="dep-slide" role="group" aria-label="Depoimento 1 de 3"
+              data-foto-src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1400&q=90"
+              data-foto-alt="Resultado do combo corte e barba — Marcos Silva" data-nome="Marcos Silva"
+              data-servico="Combo Corte + Barba">
+              <blockquote class="dep-quote">
+                <p>"Fiquei muito satisfeito! Atendimento de qualidade,
+                  muito capricho nos detalhes e o resultado ficou
+                  exatamente como eu queria."</p>
+              </blockquote>
+
+              <div class="dep-slide__rodape">
+                <div class="dep-autor">
+                  <div class="dep-autor__avatar">MS</div>
+                  <div class="dep-autor__info">
+                    <p class="dep-autor__nome">Marcos Silva</p>
+                    <p class="dep-autor__servico">Combo Corte + Barba</p>
+                    <div class="dep-estrelas" role="img" aria-label="5 estrelas">
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.dep-slide 1 -->
+
+            <!-- ─────────────── Slide 2 ─────────────── -->
+            <div class="dep-slide" role="group" aria-label="Depoimento 2 de 3"
+              data-foto-src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1400&q=90"
+              data-foto-alt="Resultado da barba modelada — Rafael Ferreira" data-nome="Rafael Ferreira"
+              data-servico="Barba no Aço">
+              <blockquote class="dep-quote">
+                <p>"Lugar top, profissional impecável.
+                  Nunca tinha saído tão satisfeito de uma barbearia.
+                  Já virei cliente fiel."</p>
+              </blockquote>
+
+              <div class="dep-slide__rodape">
+                <div class="dep-autor">
+                  <div class="dep-autor__avatar">RF</div>
+                  <div class="dep-autor__info">
+                    <p class="dep-autor__nome">Rafael Ferreira</p>
+                    <p class="dep-autor__servico">Barba no Aço</p>
+                    <div class="dep-estrelas" role="img" aria-label="5 estrelas">
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div><!-- /.dep-slide 2 -->
+
+            <!-- ─────────────── Slide 3 ─────────────── -->
+            <div class="dep-slide" role="group" aria-label="Depoimento 3 de 3"
+              data-foto-src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=90"
+              data-foto-alt="Resultado do degradê americano — Lucas Costa" data-nome="Lucas Costa"
+              data-servico="Degradê Americano">
+              <blockquote class="dep-quote">
+                <p>"O Danilo entende exatamente o que você quer mesmo
+                  sem você saber explicar direito. O resultado sempre
+                  supera a expectativa."</p>
+              </blockquote>
+
+              <div class="dep-slide__rodape">
+                <div class="dep-autor">
+                  <div class="dep-autor__avatar">LC</div>
+                  <div class="dep-autor__info">
+                    <p class="dep-autor__nome">Lucas Costa</p>
+                    <p class="dep-autor__servico">Degradê Americano</p>
+                    <div class="dep-estrelas" role="img" aria-label="5 estrelas">
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <svg class="dep-estrela" viewBox="0 0 24 24">
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.dep-slide 3 -->
+
+            <!--
+              Para adicionar mais clientes:
+              Copie um .dep-slide acima, atualize os data-*
+              e o conteúdo interno. Só isso.
+            -->
+
+          </div><!-- /#depTrack -->
+        </div><!-- /.dep-track-wrap -->
+
+        <!-- Navegação — FORA do track, sempre visível -->
+        <div class="dep-nav" id="depNav" aria-label="Navegação de depoimentos">
+          <div class="dep-dots" id="depDots" role="tablist" aria-label="Selecionar depoimento"></div>
+          <div class="dep-btns">
+            <button class="dep-btn" id="depPrev" type="button" aria-label="Depoimento anterior">
+              <svg viewBox="0 0 14 14">
+                <polyline points="9,2 4,7 9,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </button>
+            <button class="dep-btn" id="depNext" type="button" aria-label="Próximo depoimento">
+              <svg viewBox="0 0 14 14">
+                <polyline points="5,2 10,7 5,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /.depoimento__visual-col -->
+
+
+      <div class="dep-lightbox" id="depLightbox" role="dialog" aria-modal="true" aria-label="Foto em detalhe"
+        aria-hidden="true">
+        <!-- Fundo clicável para fechar -->
+        <div class="dep-lightbox__fundo" id="depLbFundo"></div>
+
+        <div class="dep-lightbox__conteiner">
+
+          <!-- Setas de navegação sobre a imagem -->
+          <div class="dep-lightbox__nav" aria-hidden="true">
+            <button class="dep-lightbox__nav-btn" id="depLbPrev" type="button" aria-label="Foto anterior">
+              <svg viewBox="0 0 14 14">
+                <polyline points="9,2 4,7 9,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </button>
+            <button class="dep-lightbox__nav-btn" id="depLbNext" type="button" aria-label="Próxima foto">
+              <svg viewBox="0 0 14 14">
+                <polyline points="5,2 10,7 5,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Imagem em alta resolução -->
+          <img class="dep-lightbox__img" id="depLbImg" src="" alt="" />
+
+          <!-- Rodapé: info + fechar -->
+          <div class="dep-lightbox__rodape">
+            <div class="dep-lightbox__info">
+              <p class="dep-lightbox__nome" id="depLbNome"></p>
+              <p class="dep-lightbox__servico" id="depLbServico"></p>
+            </div>
+            <button class="dep-lightbox__fechar" id="depLbFechar" type="button" aria-label="Fechar visualização">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+
+        </div><!-- /.dep-lightbox__conteiner -->
+      </div><!-- /#depLightbox -->
+
+    </section>
+
+
+
+
+    <!-- ════ SEÇÃO 4 — SERVIÇOS DA BARBEARIA ════  -->
+    <section class="servicos" id="servicos" aria-labelledby="titulo-servicos">
+
+      <!-- ── Col esquerda: tabs + lista ── -->
+      <div class="servicos__lista-col">
+
+        <div class="servicos__cabecalho reveal-up" style="--delay: 100ms;">
+          <p class="servicos__eyebrow">O que oferecemos</p>
+          <h2 class="servicos__titulo" id="titulo-servicos">
+            Serviços<br>do Barbeiro
+          </h2>
+          <p class="servicos__hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            Clique em um serviço para ver detalhes
+          </p>
+        </div>
+
+        <!-- Tabs de categoria — injetadas pelo JS -->
+        <div class="servicos__tabs reveal-up" style="--delay: 300ms;" id="servicos-tabs" role="tablist"
+          aria-label="Categorias de serviços"></div>
+
+        <!-- Lista de serviços — injetada pelo JS -->
+        <div class="servicos__lista-wrap reveal-up" style="--delay: 500ms;">
+          <ul class="servicos__lista" id="servicos-lista" role="listbox" aria-label="Serviços disponíveis"
+            aria-live="polite"></ul>
+        </div>
+
+      </div><!-- /.servicos__lista-col -->
+
+
+      <!-- ── Col direita: fotos sobrepostas + detalhe ── -->
+      <div class="servicos__detalhe-col reveal-right" style="--delay: 400ms;" aria-live="polite" aria-atomic="true">
+
+        <!-- Composição de imagens -->
+        <div class="servicos__fotos" aria-hidden="true">
+          <img class="servicos__foto-principal" id="servico-foto-principal"
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=85" alt="" loading="eager" />
+          <img class="servicos__foto-media" id="servico-foto-media"
+            src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="" loading="lazy" />
+          <img class="servicos__foto-pequena" id="servico-foto-pequena"
+            src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80" alt="" loading="lazy" />
+        </div>
+
+        <!-- Gradiente legibilidade -->
+        <div class="servicos__detalhe-gradiente" aria-hidden="true"></div>
+
+        <!-- Texto do serviço ativo -->
+        <div class="servicos__detalhe-texto" id="servico-detalhe">
+
+          <div class="servicos__detalhe-nome-wrap">
+            <h3 class="servicos__detalhe-nome" id="servico-nome" aria-label="Serviço selecionado">Barba</h3>
+            <div class="servicos__detalhe-linha" id="servico-linha"></div>
+          </div>
+
+          <p class="servicos__detalhe-descricao" id="servico-descricao">
+            Acabamento preciso com navalha, definindo cada detalhe do estilo.
+          </p>
+
+          <div class="servicos__detalhe-meta">
+            <p class="servicos__detalhe-preco" id="servico-preco">R$ 45</p>
+            <div class="servicos__detalhe-duracao">
+              <span class="servicos__detalhe-duracao-label">Duração</span>
+              <span class="servicos__detalhe-duracao-valor" id="servico-duracao">30 min</span>
+            </div>
+          </div>
+
+          <div class="servicos__cta servicos__cta--inativo" id="servicos-cta">
+            <button class="servicos__cta-btn" id="cta-btn" disabled data-text="Selecione um serviço">
+              Selecione um serviço
+            </button>
+          </div>
+
+        </div><!-- /.servicos__detalhe-texto -->
+
+      </div><!-- /.servicos__detalhe-col -->
+
+
+
+    </section>
+
+
+
+
+    <!-- 
+    ════ SEÇÃO 5 — TRANSFORMAÇÃO IMERSIVA (v2.0) ════ 
+    (Comentada para manter o Deck como principal)
+    <section class="transform-immersive" id="transformacao" aria-labelledby="titulo-transformacao">
+      <div class="transform-immersive__sticky">
+        <div class="transform-immersive__parallax-bg">...</div>
+        <div class="transform-immersive__intro">...</div>
+        <div class="transform-immersive__horizontal">...</div>
+      </div>
+      <div class="transform-immersive__triggers"></div>
+    </section>
+    -->
+
+    <!-- ════ SEÇÃO 5 — TRANSFORMAÇÃO: TRILHOS HORIZONTAIS DE IMAGENS ════ -->
+    <section class="transform-trilhos" id="transformacao" aria-labelledby="titulo-transformacao">
+      <div class="transform-trilhos__container">
+
+        <!-- Cabeçalho Editorial -->
+        <header class="transform-trilhos__header reveal-up">
+          <span class="transform-trilhos__eyebrow">[ ANTES E DEPOIS ]</span>
+          <h2 class="transform-trilhos__titulo" id="titulo-transformacao">
+            Mais que uma <span>Mudança de Estilo</span>
+          </h2>
+          <p class="transform-trilhos__subtitulo">
+            Rigor técnico e simetria sob medida. Arraste as esteiras para navegar rápido. Clique em qualquer card para
+            interagir com o antes e depois em alta fidelidade.
+          </p>
+        </header>
+
+        <!-- Trilho Superior: Esquerda (Sentido Horário / Move Left) -->
+        <div class="trilho-wrap" aria-label="Galeria superior de antes e depois">
+          <div class="trilho-linha trilho-linha--left" role="list">
+
+            <!-- Card 1 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloDCostas.png"
+              data-img-after="assets/daniloEspelho.png" data-title="Precision 01 / Degradê Americano"
+              data-desc="Construção de degradê cirúrgico sob medida, respeitando as linhas de crescimento natural e o contorno craniano com transição ultra limpa.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloDCostas.png" alt="Antes - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEspelho.png" alt="Depois - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">PRECISION 01 / DEGRADÊ AMERICANO</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloAneis.png"
+              data-img-after="assets/DaniloSegurandoBigode.png" data-title="Texture 02 / Barba Modelada"
+              data-desc="Alinhamento e contorno preciso na navalha clássica, com tratamento térmico de toalha quente e hidratação profunda.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloAneis.png" alt="Antes - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/DaniloSegurandoBigode.png" alt="Depois - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">TEXTURE 02 / BARBA MODELADA</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloMoto.png"
+              data-img-after="assets/daniloEMulher.png" data-title="Elite 03 / Alfaiataria Capilar"
+              data-desc="Visagismo de alta performance sob medida. Geometria estruturada na tesoura para o caimento perfeito do penteado clássico.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloMoto.png" alt="Antes - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEMulher.png" alt="Depois - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">ELITE 03 / ALFAIATARIA CAPILAR</div>
+            </div>
+
+            <!-- Duplicatas para loop infinito contínuo -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloDCostas.png"
+              data-img-after="assets/daniloEspelho.png" data-title="Precision 01 / Degradê Americano"
+              data-desc="Construção de degradê cirúrgico sob medida, respeitando as linhas de crescimento natural e o contorno craniano com transição ultra limpa.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloDCostas.png" alt="Antes - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEspelho.png" alt="Depois - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">PRECISION 01 / DEGRADÊ AMERICANO</div>
+            </div>
+
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloAneis.png"
+              data-img-after="assets/DaniloSegurandoBigode.png" data-title="Texture 02 / Barba Modelada"
+              data-desc="Alinhamento e contorno preciso na navalha clássica, com tratamento térmico de toalha quente e hidratação profunda.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloAneis.png" alt="Antes - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/DaniloSegurandoBigode.png" alt="Depois - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">TEXTURE 02 / BARBA MODELADA</div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Trilho Inferior: Direita (Sentido Anti-horário / Move Right) -->
+        <div class="trilho-wrap" aria-label="Galeria inferior de antes e depois">
+          <div class="trilho-linha trilho-linha--right" role="list">
+
+            <!-- Card 3 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloMoto.png"
+              data-img-after="assets/daniloEMulher.png" data-title="Elite 03 / Alfaiataria Capilar"
+              data-desc="Visagismo de alta performance sob medida. Geometria estruturada na tesoura para o caimento perfeito do penteado clássico.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloMoto.png" alt="Antes - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEMulher.png" alt="Depois - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">ELITE 03 / ALFAIATARIA CAPILAR</div>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloDCostas.png"
+              data-img-after="assets/daniloEspelho.png" data-title="Precision 01 / Degradê Americano"
+              data-desc="Construção de degradê cirúrgico sob medida, respeitando as linhas de crescimento natural e o contorno craniano com transição ultra limpa.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloDCostas.png" alt="Antes - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEspelho.png" alt="Depois - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">PRECISION 01 / DEGRADÊ AMERICANO</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloAneis.png"
+              data-img-after="assets/DaniloSegurandoBigode.png" data-title="Texture 02 / Barba Modelada"
+              data-desc="Alinhamento e contorno preciso na navalha clássica, com tratamento térmico de toalha quente e hidratação profunda.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloAneis.png" alt="Antes - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/DaniloSegurandoBigode.png" alt="Depois - Barba">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">TEXTURE 02 / BARBA MODELADA</div>
+            </div>
+
+            <!-- Duplicatas para loop infinito contínuo -->
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloMoto.png"
+              data-img-after="assets/daniloEMulher.png" data-title="Elite 03 / Alfaiataria Capilar"
+              data-desc="Visagismo de alta performance sob medida. Geometria estruturada na tesoura para o caimento perfeito do penteado clássico.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloMoto.png" alt="Antes - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEMulher.png" alt="Depois - Visagismo">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">ELITE 03 / ALFAIATARIA CAPILAR</div>
+            </div>
+
+            <div class="trilho-card" role="listitem" data-img-before="assets/daniloDCostas.png"
+              data-img-after="assets/daniloEspelho.png" data-title="Precision 01 / Degradê Americano"
+              data-desc="Construção de degradê cirúrgico sob medida, respeitando as linhas de crescimento natural e o contorno craniano com transição ultra limpa.">
+              <div class="trilho-card__comparacao">
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloDCostas.png" alt="Antes - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--antes">ANTES</span>
+                </div>
+                <div class="trilho-card__div"></div>
+                <div class="trilho-card__lado">
+                  <img src="assets/daniloEspelho.png" alt="Depois - Degradê">
+                  <span class="trilho-card__sinalizador trilho-card__sinalizador--depois">DEPOIS</span>
+                </div>
+              </div>
+              <div class="trilho-card__legenda">PRECISION 01 / DEGRADÊ AMERICANO</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Lightbox com Slider Antes e Depois Interativo -->
+      <div class="trilho-modal" id="trilhoModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="trilho-modal__backdrop" id="trilhoModalBackdrop"></div>
+
+        <div class="trilho-modal__content">
+          <!-- Botão Fechar -->
+          <button class="trilho-modal__close" id="trilhoModalClose" aria-label="Fechar galeria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+
+          <!-- Slider Principal de Antes e Depois -->
+          <div class="trilho-modal__slider" id="trilhoModalSlider">
+            <img class="trilho-modal__img trilho-modal__img--after" id="trilhoModalImgAfter" src="" alt="Depois"
+              loading="lazy">
+            <div class="trilho-modal__img-before-wrap" id="trilhoModalBeforeWrap">
+              <img class="trilho-modal__img trilho-modal__img--before" id="trilhoModalImgBefore" src="" alt="Antes"
+                loading="lazy">
+            </div>
+
+            <!-- Linha Divisória e Alça de Arrasto -->
+            <div class="trilho-modal__divisor" id="trilhoModalDivisor">
+              <div class="trilho-modal__handle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Etiquetas de Identificação -->
+            <span class="trilho-modal__badge trilho-modal__badge--antes">ANTES</span>
+            <span class="trilho-modal__badge trilho-modal__badge--depois">DEPOIS</span>
+          </div>
+
+          <!-- Legendas Informativas -->
+          <div class="trilho-modal__footer">
+            <h3 class="trilho-modal__title" id="trilhoModalTitle">Degradê Americano</h3>
+            <p class="trilho-modal__desc" id="trilhoModalDesc">Acabamento com precisão na navalha.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- 
+    <div class="transform-options-container">
+      ... (conteúdo comentado para escolha futura) ...
+    </div> 
+    -->
+
+
+
+
+    <!-- ════ SEÇÃO 6 MANIFESTO ════ -->
+    <section class="manifesto" id="manifesto" aria-labelledby="titulo-manifesto">
+
+      <p class="manifesto__numero" aria-hidden="true">DC</p>
+
+      <div class="manifesto__conteudo">
+
+        <p class="manifesto__eyebrow reveal-up" style="--delay: 100ms;">A filosofia</p>
+
+        <h2 class="manifesto__frase reveal-up" style="--delay: 300ms;" id="titulo-manifesto">
+          Um corte<br>
+          dura duas semanas.<br>
+          A Confiança<br>
+          dura para sempre.
+        </h2>
+
+        <div class="manifesto__assinatura">
+          <span class="manifesto__assinatura-linha" aria-hidden="true"></span>
+          <p class="manifesto__assinatura-texto">Danilo Cortinovis — Patrocínio MG</p>
+        </div>
+
+      </div>
+
+    </section><!-- /.manifesto -->
+
+
+
+    <!-- ════ SEÇÃO: CTA ════ -->
+    <section class="cta-agendar" id="agendar" aria-labelledby="titulo-cta">
+
+      <p class="cta-top-eyebrow">A estética da precisão</p>
+
+      <h2 class="cta-agendar__titulo" id="titulo-cta">Conceitual</h2>
+
+      <!-- Lado Esquerdo Inferior -->
+      <div class="cta-bottom-left">
+        <div class="cta-author-technical reveal-left" style="--delay: 100ms;">
+          <p class="cta-author-label">AUTHOR / PROJECT</p>
+          <p class="cta-author-nome">DANILO CORTINOVIS</p>
+        </div>
+
+
+        <div class="cta-call-text reveal-left" style="--delay: 300ms;">
+          DEFINA SUA IDENTIDADE VISUAL.<br>
+          DISPONIBILIDADE PARA NOVOS PROJETOS.
+        </div>
+
+        <div class="cta-actions reveal-up" style="--delay: 500ms;">
+          <a href="https://wa.me/5534999999999" target="_blank" rel="noopener noreferrer" class="cta-btn-agendar">
+            AGENDAR
+          </a>
+          <a href="https://www.instagram.com/barbeiro_cortinovis/" target="_blank" rel="noopener noreferrer"
+            class="cta-btn-log">
+            INSTAGRAM
+          </a>
+        </div>
+
+
+      </div>
+
+      <!-- Bloco Flutuante (Direita) -->
+      <div class="cta-floating-block reveal-right" style="--delay: 400ms;">
+        <div class="cta-floating-row">
+          <div class="cta-floating-unit">
+            <span class="cta-unit-label">STATUS</span>
+            <span class="cta-unit-value">Disponível</span>
+          </div>
+          <div class="cta-floating-unit">
+            <span class="cta-unit-label">SESSÃO</span>
+            <span class="cta-unit-value">Agendamento</span>
+          </div>
+        </div>
+        <div class="cta-floating-divider"></div>
+        <div class="cta-floating-unit-large">
+          <span class="cta-unit-label">LOCAL</span>
+          <span class="cta-unit-value">Patrocínio<br>Minas Gerais</span>
+        </div>
+      </div>
+
+
+
+    </section><!-- /.cta-agendar -->
+
+
+
+  </main>
+
+
+  <!-- ════════════════════════ FOOTER ════════════════════════ -->
+  <footer class="rodape" id="contato" role="contentinfo">
+    <div class="rodape__corpo">
+
+      <!-- Coluna 1 — Marca -->
+      <div class="rodape__marca">
+        <p class="rodape__marca-nome">Danilo<br>Cortinovis</p>
+        <p class="rodape__marca-descricao">
+          Sete anos elevando a autoestima dos homens de Patrocínio. Precisão, presença e respeito pelo estilo de cada
+          cliente.
+        </p>
+        <div class="rodape__social" aria-label="Redes sociais">
+          <a href="https://www.instagram.com/barbeiro_cortinovis/" target="_blank" rel="noopener noreferrer"
+            class="rodape__social-link" aria-label="Instagram: @barbeiro_cortinovis">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="https://wa.me/5534999999999" target="_blank" rel="noopener noreferrer" class="rodape__social-link"
+            aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna 2 — Navegação -->
+      <div>
+        <p class="rodape__coluna-titulo">Navegação</p>
+        <ul class="rodape__lista" role="list">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre o barbeiro</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+          <li><a href="#agendar">Agendamento</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3 — Contato -->
+      <div>
+        <p class="rodape__coluna-titulo">Contato</p>
+
+        <div class="rodape__contato-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.29 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 5.33 5.33l.88-.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <p><a href="https://wa.me/5534999999999">(34) 9 9999-9999</a></p>
+        </div>
+
+        <div class="rodape__contato-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <p><a href="mailto:contato@danilocortinovis.com.br">contato@danilocortinovis.com.br</a></p>
+        </div>
+
+        <div class="rodape__contato-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <p>Patrocínio, MG<br>Agendar via WhatsApp</p>
+        </div>
+
+        <div class="rodape__contato-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <p>Seg – Sáb: 8h às 20h<br>Dom: fechado</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Base -->
+    <div class="rodape__base">
+      <p>© 2025 Danilo Cortinovis Barbeiro — Todos os direitos reservados</p>
+      <div class="rodape__base-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <!-- ════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════ -->
+  <script src="js/config.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/bastidores.js"></script>
+  <script src="js/depoimentos.js"></script>
+  <script src="js/barbearia.js"></script>
+  <script src="js/identidade_immersive.js"></script>
+  <!-- <script src="js/transformacao_immersive.js"></script> -->
+  <script src="js/transform_stack.js"></script>
+  <script src="js/navbar.js"></script>
+  <!-- <script src="js/transform_options.js"></script> -->
+
+
+
+
+</body>
+
+</html>
